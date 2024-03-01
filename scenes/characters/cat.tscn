@@ -1,0 +1,80 @@
+[gd_scene load_steps=15 format=3 uid="uid://ccebbvxlc741v"]
+
+[ext_resource type="Script" path="res://scenes/characters/cat.gd" id="1_g4o64"]
+[ext_resource type="Texture2D" uid="uid://bpcktv2202qce" path="res://assets/cat/gato_0001.png" id="1_h3lha"]
+[ext_resource type="Texture2D" uid="uid://cvpre20lo5mft" path="res://assets/cat/gato_0002.png" id="2_dcv40"]
+[ext_resource type="Texture2D" uid="uid://6s0lwhs5aphf" path="res://assets/cat/gato_0003.png" id="3_kpojx"]
+[ext_resource type="Texture2D" uid="uid://ba4pbbhl6swqj" path="res://assets/cat/gato_0004.png" id="4_ata3u"]
+[ext_resource type="Texture2D" uid="uid://uejwdtd4nv0l" path="res://assets/cat/gato_0009.png" id="5_6kb8x"]
+[ext_resource type="Texture2D" uid="uid://cwn1ta2hial70" path="res://assets/cat/gato_0010.png" id="6_i5x6g"]
+[ext_resource type="Texture2D" uid="uid://pq3mymmgerdp" path="res://assets/cat/gato_0012.png" id="7_d2bo2"]
+[ext_resource type="Texture2D" uid="uid://cxnww3k3iubvv" path="res://assets/cat/gato_0005.png" id="8_2rhdu"]
+[ext_resource type="Texture2D" uid="uid://7h3j8kw63utm" path="res://assets/cat/gato_0006.png" id="9_5qirc"]
+[ext_resource type="Texture2D" uid="uid://c5t8cxxmj4i0g" path="res://assets/cat/gato_0007.png" id="10_3q52r"]
+[ext_resource type="Texture2D" uid="uid://c7vw35orsuwrj" path="res://assets/cat/gato_0008.png" id="11_tdkdr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lb733"]
+size = Vector2(23, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wpx2u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h3lha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dcv40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kpojx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ata3u")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6kb8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_i5x6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d2bo2")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2rhdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5qirc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3q52r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tdkdr")
+}],
+"loop": true,
+"name": &"walk_top",
+"speed": 5.0
+}]
+
+[node name="Cat" type="RigidBody2D"]
+script = ExtResource("1_g4o64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -2)
+shape = SubResource("RectangleShape2D_lb733")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wpx2u")
+animation = &"walk_down"
+frame_progress = 0.628856
