@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 
 func update_animation(base_animation):

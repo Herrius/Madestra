@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Madestra"
-run/main_scene="res://scenes/level/level 1.tscn"
+run/main_scene="res://scenes/level/introduction.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
@@ -70,4 +70,5 @@ run={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"

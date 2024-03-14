@@ -1,50 +1,101 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8wwmhb8e0tgt"]
+[gd_scene load_steps=11 format=3 uid="uid://c8wwmhb8e0tgt"]
 
 [ext_resource type="PackedScene" uid="uid://d31q475ixd73i" path="res://scenes/level/base level.tscn" id="1_eggif"]
-[ext_resource type="PackedScene" uid="uid://c5s7uxt2o1jam" path="res://scenes/objects/house.tscn" id="2_gcpon"]
+[ext_resource type="PackedScene" uid="uid://c5s7uxt2o1jam" path="res://scenes/objects/house_floor_1.tscn" id="2_gcpon"]
+[ext_resource type="Script" path="res://scenes/level/PathFollow2D.gd" id="3_ct2o6"]
 [ext_resource type="PackedScene" uid="uid://ccebbvxlc741v" path="res://scenes/characters/cat.tscn" id="3_g41tt"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ov0du"]
+size = Vector2(32, 15)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46emd"]
-size = Vector2(60, 29.25)
+size = Vector2(33, 43.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpxup"]
-size = Vector2(38.25, 34.25)
+size = Vector2(30.648, 31.1717)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ov0du"]
-size = Vector2(60.875, 13.75)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgegx"]
+size = Vector2(15.5, 29.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seht7"]
+size = Vector2(32, 29)
+
+[sub_resource type="Curve2D" id="Curve2D_esxcn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 635, 111, 0, 0, 0, 0, 636, 285, 0, 0, 0, 0, 401, 288, 0, 0, 0, 0, 402, 342)
+}
+point_count = 4
 
 [node name="Level1" instance=ExtResource("1_eggif")]
 
 [node name="house" parent="." index="0" instance=ExtResource("2_gcpon")]
 
-[node name="lavaderoArea2" type="Area2D" parent="house" index="1"]
+[node name="kitchenin" type="Area2D" parent="house" index="0"]
 
-[node name="triggerlavar" type="CollisionShape2D" parent="house/lavaderoArea2" index="0"]
-position = Vector2(173, 325)
-shape = SubResource("RectangleShape2D_46emd")
-
-[node name="trapearArea2" type="Area2D" parent="house" index="2"]
-
-[node name="triggertrapear" type="CollisionShape2D" parent="house/trapearArea2" index="0"]
-position = Vector2(292.125, 439.125)
-shape = SubResource("RectangleShape2D_lpxup")
-
-[node name="pass2level" type="Area2D" parent="house" index="3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="house/pass2level" index="0"]
-position = Vector2(639.438, 248)
+[node name="triggerkitchenin" type="CollisionShape2D" parent="house/kitchenin" index="0"]
+position = Vector2(1200, 279)
 shape = SubResource("RectangleShape2D_ov0du")
 
+[node name="kitchenout" type="Area2D" parent="house" index="1"]
+
+[node name="triggerkitchenout" type="CollisionShape2D" parent="house/kitchenout" index="0"]
+position = Vector2(400, 328.5)
+shape = SubResource("RectangleShape2D_ov0du")
+
+[node name="lavaderoArea2" type="Area2D" parent="house" index="3"]
+
+[node name="triggerlavar" type="CollisionShape2D" parent="house/lavaderoArea2" index="0"]
+position = Vector2(1330.5, 328.188)
+shape = SubResource("RectangleShape2D_46emd")
+
+[node name="comidaGato2" type="Area2D" parent="house" index="4"]
+
+[node name="triggercomida" type="CollisionShape2D" parent="house/comidaGato2" index="0"]
+position = Vector2(1423.68, 335)
+shape = SubResource("RectangleShape2D_lpxup")
+
+[node name="botarArea2" type="Area2D" parent="house" index="5"]
+
+[node name="triggerbotar" type="CollisionShape2D" parent="house/botarArea2" index="0"]
+position = Vector2(1384.25, 335.25)
+shape = SubResource("RectangleShape2D_cgegx")
+
+[node name="pass2level" type="Area2D" parent="house" index="6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="house/pass2level" index="0"]
+position = Vector2(64, 104)
+shape = SubResource("RectangleShape2D_ov0du")
+
+[node name="Ladder" type="Area2D" parent="house" index="7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="house/Ladder" index="0"]
+position = Vector2(64, 80.5)
+shape = SubResource("RectangleShape2D_seht7")
+
 [node name="Player" parent="." index="1"]
-position = Vector2(425, 63)
+position = Vector2(608, 99)
 scale = Vector2(1.01173, 1.15035)
 
-[node name="Cat" parent="." index="3" instance=ExtResource("3_g41tt")]
-position = Vector2(447, 63)
+[node name="Path2D" type="Path2D" parent="." index="3"]
+curve = SubResource("Curve2D_esxcn")
 
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+position = Vector2(400.815, 288.579)
+rotation = 2.61176
+progress = 409.783
+script = ExtResource("3_ct2o6")
+
+[node name="Cat" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("3_g41tt")]
+rotation = 4.71239
+
+[connection signal="body_entered" from="house/kitchenin" to="." method="_on_kitchenin_body_entered"]
+[connection signal="body_entered" from="house/kitchenout" to="." method="_on_kitchen_body_entered"]
 [connection signal="body_entered" from="house/lavaderoArea2" to="." method="_on_lavadero_area_2_body_entered"]
 [connection signal="body_exited" from="house/lavaderoArea2" to="." method="_on_area_2_body_exited"]
-[connection signal="body_entered" from="house/trapearArea2" to="." method="_on_trapear_area_2_body_entered"]
-[connection signal="body_exited" from="house/trapearArea2" to="." method="_on_area_2_body_exited"]
+[connection signal="body_entered" from="house/comidaGato2" to="." method="_on_comida_gato_2_body_entered"]
+[connection signal="body_exited" from="house/comidaGato2" to="." method="_on_area_2_body_exited"]
+[connection signal="body_entered" from="house/botarArea2" to="." method="_on_botar_area_2_body_entered"]
+[connection signal="body_exited" from="house/botarArea2" to="." method="_on_area_2_body_exited"]
 [connection signal="body_entered" from="house/pass2level" to="." method="_on_pass_2_level_body_entered"]
 [connection signal="body_exited" from="house/pass2level" to="." method="_on_area_2_body_exited"]
+[connection signal="body_entered" from="house/Ladder" to="." method="_on_ladder_body_entered"]

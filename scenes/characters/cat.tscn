@@ -1,49 +1,84 @@
-[gd_scene load_steps=15 format=3 uid="uid://ccebbvxlc741v"]
+[gd_scene load_steps=22 format=3 uid="uid://ccebbvxlc741v"]
 
 [ext_resource type="Script" path="res://scenes/characters/cat.gd" id="1_g4o64"]
-[ext_resource type="Texture2D" uid="uid://bpcktv2202qce" path="res://assets/cat/gato_0001.png" id="1_h3lha"]
-[ext_resource type="Texture2D" uid="uid://cvpre20lo5mft" path="res://assets/cat/gato_0002.png" id="2_dcv40"]
-[ext_resource type="Texture2D" uid="uid://6s0lwhs5aphf" path="res://assets/cat/gato_0003.png" id="3_kpojx"]
-[ext_resource type="Texture2D" uid="uid://ba4pbbhl6swqj" path="res://assets/cat/gato_0004.png" id="4_ata3u"]
-[ext_resource type="Texture2D" uid="uid://uejwdtd4nv0l" path="res://assets/cat/gato_0009.png" id="5_6kb8x"]
-[ext_resource type="Texture2D" uid="uid://cwn1ta2hial70" path="res://assets/cat/gato_0010.png" id="6_i5x6g"]
-[ext_resource type="Texture2D" uid="uid://pq3mymmgerdp" path="res://assets/cat/gato_0012.png" id="7_d2bo2"]
-[ext_resource type="Texture2D" uid="uid://cxnww3k3iubvv" path="res://assets/cat/gato_0005.png" id="8_2rhdu"]
-[ext_resource type="Texture2D" uid="uid://7h3j8kw63utm" path="res://assets/cat/gato_0006.png" id="9_5qirc"]
-[ext_resource type="Texture2D" uid="uid://c5t8cxxmj4i0g" path="res://assets/cat/gato_0007.png" id="10_3q52r"]
-[ext_resource type="Texture2D" uid="uid://c7vw35orsuwrj" path="res://assets/cat/gato_0008.png" id="11_tdkdr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lb733"]
-size = Vector2(23, 20)
+[ext_resource type="Texture2D" uid="uid://c0ymqcv38fl88" path="res://assets/cat/gato v2 maldrestra_Durmiendo_0001.png" id="2_r5fny"]
+[ext_resource type="Texture2D" uid="uid://b4uq5aurtmbx7" path="res://assets/cat/gato v2 maldrestra_Durmiendo_0002.png" id="3_yoly1"]
+[ext_resource type="Texture2D" uid="uid://c8pte7ch30of2" path="res://assets/cat/gato v2 maldrestra_caminaradelante_0001.png" id="4_2stsx"]
+[ext_resource type="Texture2D" uid="uid://pkte4vo7o3lq" path="res://assets/cat/gato v2 maldrestra_caminaradelante_0002.png" id="5_v3y4k"]
+[ext_resource type="Texture2D" uid="uid://bdxxi8q2ubgud" path="res://assets/cat/gato v2 maldrestra_caminaradelante_0003.png" id="6_d6ydn"]
+[ext_resource type="Texture2D" uid="uid://ci1o5fwisgwu7" path="res://assets/cat/gato v2 maldrestra_caminaradelante_0004.png" id="7_hsfx6"]
+[ext_resource type="Texture2D" uid="uid://d1ceopu18ox1e" path="res://assets/cat/gato v2 maldrestra_caminarizquierda_0001.png" id="8_s1pup"]
+[ext_resource type="Texture2D" uid="uid://cooi2sw761coc" path="res://assets/cat/gato v2 maldrestra_caminarizquierda_0002.png" id="9_ee4i1"]
+[ext_resource type="Texture2D" uid="uid://dm281qoj8oci8" path="res://assets/cat/gato v2 maldrestra_caminarizquierda_0003.png" id="10_s0v4k"]
+[ext_resource type="Texture2D" uid="uid://dhkco5h6dbp5p" path="res://assets/cat/gato v2 maldrestra_caminarizquierda_0004.png" id="11_vmxy8"]
+[ext_resource type="Texture2D" uid="uid://fov4tbxhwepb" path="res://assets/cat/gato v2 maldrestra_caminarderecha_0001.png" id="12_ly1h6"]
+[ext_resource type="Texture2D" uid="uid://crk168nr6rjgu" path="res://assets/cat/gato v2 maldrestra_caminarderecha_0002.png" id="13_wjcdc"]
+[ext_resource type="Texture2D" uid="uid://h77ridedkfjh" path="res://assets/cat/gato v2 maldrestra_caminarderecha_0003.png" id="14_nfwrq"]
+[ext_resource type="Texture2D" uid="uid://bwr8kxjlvp7jt" path="res://assets/cat/gato v2 maldrestra_caminarderecha_0004.png" id="15_4k1rn"]
+[ext_resource type="Texture2D" uid="uid://c5hnn5et20qq1" path="res://assets/cat/gato v2 maldrestra_caminaratras_0001.png" id="16_8bmmq"]
+[ext_resource type="Texture2D" uid="uid://d1ri57eg0riy7" path="res://assets/cat/gato v2 maldrestra_caminaratras_0002.png" id="17_62iim"]
+[ext_resource type="Texture2D" uid="uid://dd84xdkyse14q" path="res://assets/cat/gato v2 maldrestra_caminaratras_0003.png" id="18_rbmcs"]
+[ext_resource type="Texture2D" uid="uid://b0p5p5jos206" path="res://assets/cat/gato v2 maldrestra_caminaratras_0004.png" id="19_2hqts"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wpx2u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_h3lha")
+"texture": ExtResource("2_r5fny")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_dcv40")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_kpojx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_ata3u")
+"texture": ExtResource("3_yoly1")
 }],
 "loop": true,
-"name": &"walk_down",
-"speed": 5.0
+"name": &"sleep",
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_6kb8x")
+"texture": ExtResource("4_2stsx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_i5x6g")
+"texture": ExtResource("5_v3y4k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_d2bo2")
+"texture": ExtResource("6_d6ydn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hsfx6")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_s1pup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ee4i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_s0v4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vmxy8")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ly1h6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wjcdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_nfwrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4k1rn")
 }],
 "loop": true,
 "name": &"walk_right",
@@ -51,30 +86,33 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_2rhdu")
+"texture": ExtResource("16_8bmmq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5qirc")
+"texture": ExtResource("17_62iim")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_3q52r")
+"texture": ExtResource("18_rbmcs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_tdkdr")
+"texture": ExtResource("19_2hqts")
 }],
 "loop": true,
-"name": &"walk_top",
-"speed": 5.0
+"name": &"walk_up",
+"speed": 4.0
 }]
 
-[node name="Cat" type="RigidBody2D"]
-script = ExtResource("1_g4o64")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8lc6e"]
+radius = 4.0
+height = 14.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, -2)
-shape = SubResource("RectangleShape2D_lb733")
+[node name="Cat" type="CharacterBody2D"]
+script = ExtResource("1_g4o64")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wpx2u")
 animation = &"walk_down"
-frame_progress = 0.628856
+autoplay = "walk_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8lc6e")

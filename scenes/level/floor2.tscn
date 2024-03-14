@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsh51yk8l22sp"]
+
+[ext_resource type="PackedScene" uid="uid://d31q475ixd73i" path="res://scenes/level/base level.tscn" id="1_qpifb"]
+[ext_resource type="PackedScene" uid="uid://fpntekgeb475" path="res://scenes/objects/house_floor_2.tscn" id="2_dwtjw"]
+
+[node name="Level1" instance=ExtResource("1_qpifb")]
+
+[node name="HouseFloor2" parent="." index="0" instance=ExtResource("2_dwtjw")]
+
+[node name="Player" parent="." index="1"]
+position = Vector2(65, 115)
