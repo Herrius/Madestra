@@ -20,7 +20,7 @@ func _input(event):
         current_fragment += 1
         if current_fragment >= text_fragments.size():
             # Cambia a la escena de nivel 1. Asegúrate de que la ruta sea correcta.
-            get_tree().change_scene_to_file("res://scenes/level/level 1.tscn")
+            get_tree().change_scene_to_file("res://scenes/level/level 1 floor 1.tscn")
         else:
             update_text()
 

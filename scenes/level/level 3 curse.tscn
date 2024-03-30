@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=3 uid="uid://wmcgbf72ptsk"]
+
+[ext_resource type="PackedScene" uid="uid://bend1b48tmql5" path="res://scenes/characters/main_mini_game.tscn" id="1_4uuwm"]
+[ext_resource type="Script" path="res://scenes/level/level 3 curse.gd" id="1_lb71v"]
+[ext_resource type="PackedScene" uid="uid://wgqxdhrprjhl" path="res://scenes/objects/minilevel1.tscn" id="1_nmxco"]
+[ext_resource type="Script" path="res://scenes/objects/spwaner2.gd" id="4_dx0dh"]
+[ext_resource type="PackedScene" uid="uid://b2og1evtvytxr" path="res://scenes/objects/spwaner.tscn" id="4_fohgd"]
+[ext_resource type="Script" path="res://scenes/objects/spwaner3.gd" id="5_i8j68"]
+[ext_resource type="Script" path="res://scenes/objects/spwaner_4.gd" id="6_2q1pq"]
+[ext_resource type="Script" path="res://scenes/objects/spwaner_5.gd" id="7_13v5j"]
+[ext_resource type="Script" path="res://scenes/objects/spwaner_6.gd" id="8_ri6ee"]
+[ext_resource type="Script" path="res://scenes/objects/spwaner_7.gd" id="9_fdmff"]
+[ext_resource type="Script" path="res://scenes/objects/spwaner_8.gd" id="10_cqtaj"]
+
+[node name="curse level" type="Node2D"]
+script = ExtResource("1_lb71v")
+
+[node name="Minilevel1" parent="." instance=ExtResource("1_nmxco")]
+
+[node name="Spawner" parent="." instance=ExtResource("4_fohgd")]
+position = Vector2(56, 232)
+
+[node name="Spawner2" parent="." instance=ExtResource("4_fohgd")]
+position = Vector2(328, 248)
+script = ExtResource("4_dx0dh")
+
+[node name="Spawner3" parent="." instance=ExtResource("4_fohgd")]
+position = Vector2(328, 200)
+script = ExtResource("5_i8j68")
+
+[node name="Spawner4" parent="." instance=ExtResource("4_fohgd")]
+position = Vector2(56, 184)
+script = ExtResource("6_2q1pq")
+
+[node name="Spawner5" parent="." instance=ExtResource("4_fohgd")]
+position = Vector2(328, 168)
+script = ExtResource("7_13v5j")
+
+[node name="Spawner6" parent="." instance=ExtResource("4_fohgd")]
+position = Vector2(56, 152)
+script = ExtResource("8_ri6ee")
+
+[node name="Spawner7" parent="." instance=ExtResource("4_fohgd")]
+position = Vector2(56, 120)
+script = ExtResource("9_fdmff")
+
+[node name="Spawner8" parent="." instance=ExtResource("4_fohgd")]
+position = Vector2(328, 104)
+script = ExtResource("10_cqtaj")
+
+[node name="MainMiniGame" parent="." instance=ExtResource("1_4uuwm")]
+position = Vector2(232, 312)
+disable_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

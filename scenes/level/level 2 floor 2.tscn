@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsh51yk8l22sp"]
+
+[ext_resource type="PackedScene" uid="uid://d31q475ixd73i" path="res://scenes/level/base level.tscn" id="1_xldw7"]
+[ext_resource type="Script" path="res://scenes/scripts/level 2/floor2.gd" id="2_paxnb"]
+[ext_resource type="PackedScene" uid="uid://fpntekgeb475" path="res://scenes/objects/house_floor_2.tscn" id="3_ofnys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnim1"]
+size = Vector2(32.75, 18.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xdgs"]
+size = Vector2(21, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auxeg"]
+size = Vector2(16, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f62hm"]
+size = Vector2(36, 27)
+
+[node name="floor2" instance=ExtResource("1_xldw7")]
+script = ExtResource("2_paxnb")
+
+[node name="HouseFloor2" parent="." index="0" instance=ExtResource("3_ofnys")]
+
+[node name="ladder" type="Area2D" parent="HouseFloor2" index="1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseFloor2/ladder" index="0"]
+position = Vector2(64, 87)
+shape = SubResource("RectangleShape2D_dnim1")
+
+[node name="roomDoorIn" type="Area2D" parent="HouseFloor2" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseFloor2/roomDoorIn" index="0"]
+position = Vector2(295.5, 212)
+shape = SubResource("RectangleShape2D_1xdgs")
+
+[node name="roomDoorOut" type="Area2D" parent="HouseFloor2" index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseFloor2/roomDoorOut" index="0"]
+position = Vector2(1032, 204.5)
+shape = SubResource("RectangleShape2D_auxeg")
+
+[node name="computerGame" type="Area2D" parent="HouseFloor2" index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseFloor2/computerGame" index="0"]
+position = Vector2(1040, 98.5)
+shape = SubResource("RectangleShape2D_f62hm")
+
+[node name="Player" parent="." index="1"]
+position = Vector2(64, 121)
+
+[connection signal="body_entered" from="HouseFloor2/ladder" to="." method="_on_ladder_body_entered"]
+[connection signal="body_entered" from="HouseFloor2/roomDoorIn" to="." method="_on_room_door_in_body_entered"]
+[connection signal="body_exited" from="HouseFloor2/roomDoorIn" to="." method="_on_room_body_exited"]
+[connection signal="body_entered" from="HouseFloor2/roomDoorOut" to="." method="_on_room_door_out_body_entered"]
+[connection signal="body_exited" from="HouseFloor2/roomDoorOut" to="." method="_on_room_body_exited"]
+[connection signal="body_entered" from="HouseFloor2/computerGame" to="." method="_on_computer_game_body_entered"]
+[connection signal="body_exited" from="HouseFloor2/computerGame" to="." method="_on_computer_game_body_exited"]

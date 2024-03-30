@@ -1,7 +1,4 @@
 # GlobalSignals.gd
 extends Node
 
-signal show_dialog(dialog_text)
-
-func emit_show_dialog(text):
-    emit_signal("show_dialog", text)
+var position_character={"piso 1":Vector2(65,137)}

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb6mxors6asgy"]
+
+[ext_resource type="Script" path="res://scenes/characters/car_mini.gd" id="1_a6ihq"]
+[ext_resource type="Texture2D" uid="uid://dwtbb4d68f5jc" path="res://assets/minigame/carro 1.png" id="1_cxyp2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xu2oa"]
+radius = 5.0
+height = 16.0
+
+[node name="CarMini" type="CharacterBody2D" groups=["carros"]]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_a6ihq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cxyp2")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xu2oa")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)

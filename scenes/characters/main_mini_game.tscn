@@ -1,0 +1,108 @@
+[gd_scene load_steps=20 format=3 uid="uid://bend1b48tmql5"]
+
+[ext_resource type="Script" path="res://scenes/characters/main_mini_game.gd" id="1_7no3n"]
+[ext_resource type="Texture2D" uid="uid://ktb7ghexkmeg" path="res://assets/minigame/main/maldresta mini prota_0004_adelante (1).png" id="2_jnllh"]
+[ext_resource type="Texture2D" uid="uid://mby40vratpe3" path="res://assets/minigame/main/maldresta mini prota_0004_adelante (2).png" id="3_ywumg"]
+[ext_resource type="Texture2D" uid="uid://o0ju1d8lkseu" path="res://assets/minigame/main/maldresta mini prota_0004_adelante (3).png" id="4_eony6"]
+[ext_resource type="Texture2D" uid="uid://dgyehyiuufp7l" path="res://assets/minigame/main/maldresta mini prota_0004_adelante (4).png" id="5_gkbh7"]
+[ext_resource type="Texture2D" uid="uid://das1l4j1vo1ul" path="res://assets/minigame/main/maldresta mini prota_0012_izq (1).png" id="6_r25gf"]
+[ext_resource type="Texture2D" uid="uid://dini1lbc8edue" path="res://assets/minigame/main/maldresta mini prota_0012_izq (2).png" id="7_bib7q"]
+[ext_resource type="Texture2D" uid="uid://n4d1jgxv0m17" path="res://assets/minigame/main/maldresta mini prota_0012_izq (3).png" id="8_melms"]
+[ext_resource type="Texture2D" uid="uid://dtm1ov6f1owqt" path="res://assets/minigame/main/maldresta mini prota_0012_izq (4).png" id="9_t518g"]
+[ext_resource type="Texture2D" uid="uid://1urcx822v0m5" path="res://assets/minigame/main/maldresta mini prota_0014_der (1).png" id="10_sqypg"]
+[ext_resource type="Texture2D" uid="uid://bmq5ko8wqx0d7" path="res://assets/minigame/main/maldresta mini prota_0014_der (2).png" id="11_l16kf"]
+[ext_resource type="Texture2D" uid="uid://brmqx1r7251wf" path="res://assets/minigame/main/maldresta mini prota_0014_der (3).png" id="12_wvgyd"]
+[ext_resource type="Texture2D" uid="uid://dk7klw7tuo5pt" path="res://assets/minigame/main/maldresta mini prota_0014_der (4).png" id="13_43sx5"]
+[ext_resource type="Texture2D" uid="uid://c0o874ler151h" path="res://assets/minigame/main/maldresta mini prota_0007_atras (1).png" id="14_6f46q"]
+[ext_resource type="Texture2D" uid="uid://bwoh50rfp1djy" path="res://assets/minigame/main/maldresta mini prota_0007_atras (2).png" id="15_6uyac"]
+[ext_resource type="Texture2D" uid="uid://c3sxpruuqe2uo" path="res://assets/minigame/main/maldresta mini prota_0007_atras (3).png" id="16_maw13"]
+[ext_resource type="Texture2D" uid="uid://jotjpq4a86qw" path="res://assets/minigame/main/maldresta mini prota_0007_atras (4).png" id="17_xbm8b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppri4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jnllh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ywumg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eony6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gkbh7")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_r25gf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bib7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_melms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_t518g")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_sqypg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_l16kf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wvgyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_43sx5")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_6f46q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_6uyac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_maw13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xbm8b")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtpys"]
+radius = 5.0
+height = 16.0
+
+[node name="MainMiniGame" type="CharacterBody2D"]
+collision_mask = 11
+script = ExtResource("1_7no3n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ppri4")
+animation = &"walk_up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vtpys")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
