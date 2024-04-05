@@ -30,7 +30,9 @@ func mover_personaje(direccion: Vector2) -> void:
     # Intenta mover el personaje a la nueva posición y detenerse en caso de colisión
     var collision=move_and_collide(movimiento)
     if collision:
-        get_tree().reload_current_scene()
+        var collider = collision.get_collider()  # Obtén la referencia al nodo colisionado
+        if collider and collider.is_in_group("carros"):
+            get_tree().reload_current_scene()
 
 
     

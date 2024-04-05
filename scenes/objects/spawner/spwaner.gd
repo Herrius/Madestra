@@ -18,16 +18,17 @@ func _process(delta: float) -> void:
     manage_cars(delta,limit)
 
 func _on_timer_timeout():
-    spawn_car(car_sprite,car_speed,max_cars)
+    spawn_car(car_sprite,car_speed,max_cars,180)
 
 
-func spawn_car(car_scene,car_speed,max_cars):
+func spawn_car(car_scene,car_speed,max_cars,car_rotation):
     if cars.size() < max_cars:
         var new_car = car_scene.instantiate() as CharacterBody2D
         add_child(new_car)
         new_car.global_position = self.global_position # Ajusta a la posición de inicio deseada
         new_car.speed = car_speed
         new_car.direction = car_direction
+        new_car.rotation_degrees=car_rotation
         cars.append(new_car)
 
 func manage_cars(delta: float,limit):
@@ -38,4 +39,4 @@ func manage_cars(delta: float,limit):
             cars.erase(car)
             car.queue_free()
             # Opcionalmente, regenera el carro
-            spawn_car(car_sprite,car_speed,max_cars)
+            spawn_car(car_sprite,car_speed,max_cars,0)

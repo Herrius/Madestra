@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://wfbuvmxsltbc"]
+
+[ext_resource type="Script" path="res://scenes/level/level 3.1 curse.gd" id="1_i7i8o"]
+[ext_resource type="PackedScene" uid="uid://wgqxdhrprjhl" path="res://scenes/objects/minilevel1.tscn" id="2_i2sxt"]
+[ext_resource type="PackedScene" uid="uid://b2og1evtvytxr" path="res://scenes/objects/spwaner.tscn" id="3_k6r6a"]
+[ext_resource type="Script" path="res://scenes/objects/spawner/spwaner3.2.gd" id="4_rq36v"]
+[ext_resource type="PackedScene" uid="uid://bend1b48tmql5" path="res://scenes/characters/main_mini_game.tscn" id="11_ovt31"]
+
+[node name="curse level" type="Node2D"]
+script = ExtResource("1_i7i8o")
+
+[node name="Minilevel1" parent="." instance=ExtResource("2_i2sxt")]
+
+[node name="Spawner" parent="." instance=ExtResource("3_k6r6a")]
+position = Vector2(56, 104)
+
+[node name="Spawner2" parent="." instance=ExtResource("3_k6r6a")]
+position = Vector2(56, 248)
+script = ExtResource("4_rq36v")
+
+[node name="Spawner3" parent="." instance=ExtResource("3_k6r6a")]
+position = Vector2(56, 232)
+script = ExtResource("4_rq36v")
+
+[node name="Spawner4" parent="." instance=ExtResource("3_k6r6a")]
+position = Vector2(56, 200)
+script = ExtResource("4_rq36v")
+
+[node name="Spawner5" parent="." instance=ExtResource("3_k6r6a")]
+position = Vector2(56, 184)
+script = ExtResource("4_rq36v")
+
+[node name="MainMiniGame" parent="." instance=ExtResource("11_ovt31")]
+position = Vector2(232, 296)
+disable_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

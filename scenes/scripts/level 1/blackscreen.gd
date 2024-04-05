@@ -1,5 +1,6 @@
 extends CanvasLayer
 var posiciones_por_piso = {0:Vector2(608,99),1: Vector2(60,111), 2: Vector2(64,166)}
+#0:Vector2(608,99)
 var i:int=0
 func _on_btn_si_pressed():
     $ConfirmedAction.visible = false

@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8wwmhb8e0tgt"]
+[gd_scene load_steps=14 format=3 uid="uid://c8wwmhb8e0tgt"]
 
 [ext_resource type="PackedScene" uid="uid://d31q475ixd73i" path="res://scenes/level/base level.tscn" id="1_0j3ug"]
 [ext_resource type="PackedScene" uid="uid://c5s7uxt2o1jam" path="res://scenes/objects/house_floor_1.tscn" id="2_4r0jb"]
 [ext_resource type="Script" path="res://scenes/level/PathFollow2D.gd" id="3_yydwg"]
 [ext_resource type="PackedScene" uid="uid://ccebbvxlc741v" path="res://scenes/characters/cat.tscn" id="4_6j1x6"]
+[ext_resource type="Script" path="res://scenes/level/PathFollowCat.gd" id="5_eai0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuu7a"]
 size = Vector2(31.5, 16.5)
@@ -25,9 +26,15 @@ size = Vector2(32, 29)
 
 [sub_resource type="Curve2D" id="Curve2D_esxcn"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 635, 111, 0, 0, 0, 0, 636, 285, 0, 0, 0, 0, 401, 288, 0, 0, 0, 0, 400, 329, 0, 0, 0, 0, 400, 341)
+"points": PackedVector2Array(0, 0, 0, 0, 633, 104, 0, 0, 0, 0, 636, 285, 0, 0, 0, 0, 401, 288, 0, 0, 0, 0, 400, 329)
 }
-point_count = 5
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_akfff"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1192, 287, 0, 0, 0, 0, 1191, 408, 0, 0, 0, 0, 1472, 407, 0, 0, 0, 0, 1473, 441)
+}
+point_count = 4
 
 [node name="floor1" instance=ExtResource("1_0j3ug")]
 
@@ -77,27 +84,41 @@ position = Vector2(64, 80.5)
 shape = SubResource("RectangleShape2D_seht7")
 
 [node name="Player" parent="." index="1"]
-position = Vector2(608, 99)
+position = Vector2(632, 125)
 scale = Vector2(1.01173, 1.15035)
 speed = 101
 
-[node name="Path2D" type="Path2D" parent="." index="3"]
+[node name="pathKitchenCat" type="Path2D" parent="." index="3"]
 curve = SubResource("Curve2D_esxcn")
+metadata/_edit_lock_ = true
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
-position = Vector2(400.804, 288.488)
-rotation = 2.46642
+[node name="PathFollow2D" type="PathFollow2D" parent="pathKitchenCat" index="0"]
+position = Vector2(407.222, 287.921)
+rotation = 3.12883
 progress = 409.783
 script = ExtResource("3_yydwg")
+
+[node name="Cat" parent="pathKitchenCat/PathFollow2D" index="0" instance=ExtResource("4_6j1x6")]
+rotation = 4.71239
+
+[node name="Path2D" type="Path2D" parent="." index="4"]
+curve = SubResource("Curve2D_akfff")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+position = Vector2(1469.31, 406.999)
+rotation = -0.0035587
+progress = 399.264
+script = ExtResource("5_eai0d")
 
 [node name="Cat" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("4_6j1x6")]
 rotation = 4.71239
 
-[node name="Timer" type="Timer" parent="." index="4"]
+[node name="Timer" type="Timer" parent="." index="5"]
 wait_time = 3.0
 
 [connection signal="body_entered" from="house/kitchenout" to="." method="_on_kitchenout_body_entered"]
 [connection signal="body_entered" from="house/kitchenin" to="." method="_on_kitchenin_body_entered"]
+[connection signal="body_entered" from="house/kitchenin" to="pathKitchenCat/PathFollow2D" method="_on_kitchenin_body_entered"]
 [connection signal="body_entered" from="house/lavaderoArea2" to="." method="_on_lavadero_area_2_body_entered"]
 [connection signal="body_exited" from="house/lavaderoArea2" to="." method="_on_area_2_body_exited"]
 [connection signal="body_entered" from="house/comidaGato2" to="." method="_on_comida_gato_2_body_entered"]

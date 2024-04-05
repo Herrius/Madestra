@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqgi5i60iqpqx"]
+
+[ext_resource type="Script" path="res://scenes/level/level 3.1 curse.gd" id="1_e5go3"]
+[ext_resource type="PackedScene" uid="uid://wgqxdhrprjhl" path="res://scenes/objects/minilevel1.tscn" id="2_w8j7o"]
+[ext_resource type="PackedScene" uid="uid://b2og1evtvytxr" path="res://scenes/objects/spwaner.tscn" id="3_1nymj"]
+[ext_resource type="PackedScene" uid="uid://bend1b48tmql5" path="res://scenes/characters/main_mini_game.tscn" id="5_mm6yp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5034"]
+size = Vector2(256, 16)
+
+[node name="curse level" type="Node2D"]
+script = ExtResource("1_e5go3")
+
+[node name="Minilevel1" parent="." instance=ExtResource("2_w8j7o")]
+
+[node name="Spawner" parent="." instance=ExtResource("3_1nymj")]
+position = Vector2(72, -312)
+
+[node name="Spawner2" parent="." instance=ExtResource("3_1nymj")]
+position = Vector2(56, 104)
+script = null
+
+[node name="MainMiniGame" parent="." instance=ExtResource("5_mm6yp")]
+position = Vector2(232, 296)
+disable_mode = 2
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(192, 88)
+shape = SubResource("RectangleShape2D_y5034")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

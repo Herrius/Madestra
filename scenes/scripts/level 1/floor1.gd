@@ -108,14 +108,12 @@ func _on_area_2_body_exited(body):
 
 
 func _on_kitchenout_body_entered(body):
-    print("saliendo de cocina")
     if body.name=="Player":
         $Player.position=Vector2(401,296)
         text=""
         blackscreen(text)
 
 func _on_kitchenin_body_entered(body):
-    print("entrando de cocina")
     if body.name=="Player":
         $Player.position=Vector2(1199.508,302.046)
         text=""

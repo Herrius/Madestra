@@ -1,4 +1,5 @@
 extends PathFollow2D
+class_name pathcat
 var speed = 50 # La velocidad de movimiento, ajustar según necesidad
 var moving = true # Un interruptor para iniciar/detener el movimiento
 
@@ -20,3 +21,7 @@ func _process(delta):
         if progress_ratio >= 0.99:
             progress_ratio = 0.99 # Asegurarse de que no exceda el final
             moving = false # Detener el movimiento
+
+
+func _on_kitchenin_body_entered(_body):
+    queue_free()
