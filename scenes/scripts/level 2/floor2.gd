@@ -12,7 +12,7 @@ func handle_interaction():
             await UiScreen.change_position()
             $Player.position=Vector2(1034,177)
         "computerGame":
-             UiScreen.change_scene("res://scenes/level/level 3 curse.tscn")
+             UiScreen.change_scene("res://scenes/level/level 3.1 curse.tscn")
             
 func _on_ladder_body_entered(_body):
     UiScreen.i=1

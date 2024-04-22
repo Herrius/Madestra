@@ -19,6 +19,7 @@ func restart_level():
 func _on_area_2d_body_entered(_body):
     $MainMiniGame.movimiento_px=0
     call_deferred("deferred_add_car")
+    UiScreen.change_scene("res://scenes/level/level 3.2 curse.tscn")
     
 func deferred_add_car():
     var new_car = car_sprite.instantiate() as CharacterBody2D

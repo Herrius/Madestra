@@ -62,7 +62,7 @@ shape = SubResource("RectangleShape2D_46emd")
 [node name="comidaGato2" type="Area2D" parent="house" index="4"]
 
 [node name="triggercomida" type="CollisionShape2D" parent="house/comidaGato2" index="0"]
-position = Vector2(1423.68, 335)
+position = Vector2(1466, 426)
 shape = SubResource("RectangleShape2D_lpxup")
 
 [node name="botarArea2" type="Area2D" parent="house" index="5"]
@@ -74,13 +74,13 @@ shape = SubResource("RectangleShape2D_cgegx")
 [node name="pass2level" type="Area2D" parent="house" index="6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="house/pass2level" index="0"]
-position = Vector2(64, 104)
+position = Vector2(64, 96)
 shape = SubResource("RectangleShape2D_ov0du")
 
 [node name="Ladder" type="Area2D" parent="house" index="7"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="house/Ladder" index="0"]
-position = Vector2(64, 80.5)
+position = Vector2(64, 81)
 shape = SubResource("RectangleShape2D_seht7")
 
 [node name="Player" parent="." index="1"]
@@ -88,7 +88,7 @@ position = Vector2(632, 125)
 scale = Vector2(1.01173, 1.15035)
 speed = 101
 
-[node name="pathKitchenCat" type="Path2D" parent="." index="3"]
+[node name="pathKitchenCat" type="Path2D" parent="." index="2"]
 curve = SubResource("Curve2D_esxcn")
 metadata/_edit_lock_ = true
 
@@ -101,7 +101,7 @@ script = ExtResource("3_yydwg")
 [node name="Cat" parent="pathKitchenCat/PathFollow2D" index="0" instance=ExtResource("4_6j1x6")]
 rotation = 4.71239
 
-[node name="Path2D" type="Path2D" parent="." index="4"]
+[node name="Path2D" type="Path2D" parent="." index="3"]
 curve = SubResource("Curve2D_akfff")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
@@ -113,7 +113,7 @@ script = ExtResource("5_eai0d")
 [node name="Cat" parent="Path2D/PathFollow2D" index="0" instance=ExtResource("4_6j1x6")]
 rotation = 4.71239
 
-[node name="Timer" type="Timer" parent="." index="5"]
+[node name="Timer" type="Timer" parent="." index="4"]
 wait_time = 3.0
 
 [connection signal="body_entered" from="house/kitchenout" to="." method="_on_kitchenout_body_entered"]

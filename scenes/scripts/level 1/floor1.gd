@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var task_list: int = 5
+@export var task_list: int = 0
 var player_in_task: bool = false
 var current_area: String = ""
 var botar_done: bool = false  # Indicador de tarea de trapear completada
@@ -20,55 +20,76 @@ func handle_interaction():
     match current_area:
         "pass2level":
             if task_list < 3:  # Asumiendo que hay 3 tareas a completar
-                retreat_player()
+                retreat_player(current_area)
         "lavaderoarea2":
             if player_in_task and not lavadero_done:
                 perform_task("Lavando...")
+                change_tile_clear(Vector2(83,19),Vector2(5,6))
                 lavadero_done = true  # Marcar la tarea de lavadero como completada
                 player_in_task = false  # Resetear estado para evitar múltiples interacciones
         "botararea2":
-            if player_in_task and not botar_done:
+            if player_in_task and not botar_done :
                 perform_task("Botando...")
+                change_tile_clear(Vector2(86,20),Vector2(1,6))
                 botar_done = true  # Marcar la tarea de trapear como completada
                 player_in_task = false  # Resetear estado para evitar múltiples interacciones
         "comidagato2":
-            if player_in_task and not comida_done:
+            if player_in_task and not comida_done and botar_done and lavadero_done :
                 perform_task("Agarrando comida de gato...")
                 comida_done = true  # Marcar la tarea de trapear como completada
                 player_in_task = false  # Resetear estado para evitar múltiples interacciones
-                
+                $Player.carrying_cat=true
+                $Path2D/PathFollow2D/Cat.visible=false
+            else:
+                text="I can't take the cat without first washing the dishes and taking out the trash."
+                dialoge(text)
+                if $Player.speed==0:
+                    retreat_player()
+
+
+func change_tile_clear(position,position_tile):
+    var tile_map= $house/TileMap
+    var tile_position=position
+    var clean_atlas_coords=position_tile
+    var new_tile_index=5
+    tile_map.set_cell(5, tile_position, 2, clean_atlas_coords)
+    
 func blackscreen(text_screen):
     var tween = create_tween()
     tween.tween_property($Player,"speed",0,0)
-    tween.tween_property($Blackscreen/SceenTransitation,"visible",true,0)
-    $Blackscreen/SceenTransitation/ResultScreen/ResultLabel.text=text_screen
-    tween.tween_property($Blackscreen/SceenTransitation,"visible",false,1)
+    tween.tween_property(UiScreen.get_node("SceenTransitation"),"visible",true,0)
+    UiScreen.get_node("SceenTransitation/ResultScreen/ResultLabel").text=text_screen
+    tween.tween_property(UiScreen.get_node("SceenTransitation"),"visible",false,1)
     tween.tween_property($Player,"speed",100,1)
 
 func dialoge(text_screen):
     var tween = create_tween()
-    $Blackscreen/dialogo.visible = true
-    $Blackscreen/dialogo/ColorRect/Label.text = text_screen 
+    UiScreen.get_node("dialogo").visible = true
+    UiScreen.get_node("dialogo/ColorRect/Label").text = text_screen 
     tween.tween_property($Player,"speed",0,0)
 
 func show_pass2level_dialogue():
-    text="No puedo ir a mi cuarto sin antes acabar los deberes"
+    text="I can't go to my room without first finishing my homework and taking my cat 'Sombra' with me."
     dialoge(text)
 
-func retreat_player():
+func retreat_player(area='cat'):
     var tween = create_tween()
-    tween.tween_property($Player, "position", $Player.position + Vector2(0, 25), 0.5)
-    $Player/AnimatedSprite2D.play("walk_down")
-    $Blackscreen/dialogo.visible = false
+    if area =="pass2level":
+        tween.tween_property($Player, "position", $Player.position + Vector2(0, 25), 0.5)
+        $Player/AnimatedSprite2D.play("walk_down")
+    else:
+        tween.tween_property($Player, "position", $Player.position + Vector2(0, -25), 0.5)
+        $Player/AnimatedSprite2D.play("walk_top")
+    UiScreen.get_node("dialogo").visible = false
     tween.tween_property($Player,"speed",100,0)
 
+
 func perform_task(text_screen):
+    UiScreen.get_node("ConfirmedAction").visible = true 
+    UiScreen.get_node("SceenTransitation/ResultScreen/ResultLabel").text = text_screen
     task_list += 1
-    $Blackscreen/ConfirmedAction.visible = true
-    $Blackscreen/SceenTransitation/ResultScreen/ResultLabel.text = text_screen
     $Player.speed=0
     $Timer.start()
-    # Aquí puedes agregar la transición de pantalla si es necesario
 
 # Funciones para manejar la entrada y salida de áreas
 func _on_pass_2_level_body_entered(body):
@@ -76,7 +97,6 @@ func _on_pass_2_level_body_entered(body):
         current_area = "pass2level"
         if task_list>=  3:
             $house/pass2level/CollisionShape2D.call_deferred("set", "disabled", true)
-
         else:
             show_pass2level_dialogue()
             
@@ -90,6 +110,7 @@ func _on_lavadero_area_2_body_entered(body):
         current_area = "lavaderoarea2"
         player_in_task = true
         
+
 func _on_botar_area_2_body_entered(body):
         if body.name == "Player" and not botar_done:
             current_area = "botararea2"
@@ -120,7 +141,6 @@ func _on_kitchenin_body_entered(body):
         blackscreen(text)
 
 func _on_ladder_body_entered(_body):
-    UiScreen.i=2
     var tween = create_tween()
     tween.tween_property($Player,"speed",0,0.5)
     UiScreen.change_scene("res://scenes/level/level 2 floor 2.tscn")
