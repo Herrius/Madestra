@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxwl7ckq63v1m"]
+[gd_scene load_steps=10 format=3 uid="uid://bxwl7ckq63v1m"]
 
 [ext_resource type="PackedScene" uid="uid://d31q475ixd73i" path="res://scenes/level/base level.tscn" id="1_kksb5"]
 [ext_resource type="Script" path="res://scenes/scripts/level 3/level_3_4.gd" id="2_fy7an"]
@@ -10,6 +10,15 @@ size = Vector2(15, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gudlb"]
 size = Vector2(24, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8aqn5"]
+size = Vector2(21, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldmnt"]
+size = Vector2(31, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw4x"]
+size = Vector2(26, 30)
 
 [node name="level 3_4" instance=ExtResource("1_kksb5")]
 script = ExtResource("2_fy7an")
@@ -31,9 +40,30 @@ shape = SubResource("RectangleShape2D_cjrx8")
 position = Vector2(927, 104)
 shape = SubResource("RectangleShape2D_gudlb")
 
-[node name="Timer" type="Timer" parent="." index="5"]
-wait_time = 3.0
+[node name="passageIn" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="passageIn" index="0"]
+position = Vector2(1033, 218)
+shape = SubResource("RectangleShape2D_8aqn5")
+
+[node name="Timer" type="Timer" parent="." index="6"]
+
+[node name="arriveMonster" type="Area2D" parent="." index="7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="arriveMonster" index="0"]
+position = Vector2(63.5, 91.5)
+shape = SubResource("RectangleShape2D_ldmnt")
+
+[node name="pass3floor" type="Area2D" parent="." index="8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pass3floor" index="0"]
+position = Vector2(608, 144)
+shape = SubResource("RectangleShape2D_ajw4x")
 
 [connection signal="body_entered" from="controlSleep" to="." method="_on_control_sleep_body_entered"]
+[connection signal="body_exited" from="controlSleep" to="." method="_on_control_sleep_body_exited"]
 [connection signal="body_entered" from="sleeping" to="." method="_on_sleeping_body_entered"]
+[connection signal="body_entered" from="passageIn" to="." method="_on_passage_in_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="arriveMonster" to="." method="_on_arrive_monster_body_entered"]
+[connection signal="body_entered" from="pass3floor" to="." method="_on_pass_3_floor_body_entered"]

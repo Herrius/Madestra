@@ -14,8 +14,10 @@ func _process(_delta):
 func handle_interaction():
     match current_area:
         "roomDoorIn":
+            $Player.speed=0
             await UiScreen.change_position()
             $Player.position=Vector2(1034,177)
+            $Timer.start()
         "computerGame":
             UiScreen.change_scene("res://scenes/level/level 3.1 curse.tscn")
         "catSleep":
@@ -42,8 +44,10 @@ func _on_room_door_in_body_entered(body):
         current_area = "roomDoorIn"
 
 func _on_room_door_out_body_entered(_body):
+    $Player.speed=0
     await UiScreen.change_position()
     $Player.position=Vector2(296,219)
+    $Timer.start()
 
 func _on_room_body_exited(body):
     if body.name == "Player":
@@ -60,3 +64,7 @@ func _on_computer_game_body_exited(body):
 func _on_cat_sleep_body_entered(body):
     if body.name == "Player":
         current_area = "catSleep"
+
+
+func _on_timer_timeout():
+     $Player.speed=100

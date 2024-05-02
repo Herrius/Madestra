@@ -147,7 +147,6 @@ func _on_ladder_body_entered(_body):
     tween.tween_property($Player,"speed",0,0.5)
     UiScreen.change_scene("res://scenes/level/level 2 floor 2.tscn")
 
-
 func _on_timer_timeout():
      $Player.speed=100 
 

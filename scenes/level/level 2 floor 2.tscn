@@ -58,6 +58,10 @@ shape = SubResource("RectangleShape2D_f62hm")
 [node name="Player" parent="." index="1"]
 position = Vector2(64, 121)
 
+[node name="Timer" type="Timer" parent="." index="2"]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_entered" from="HouseFloor2/catSleep" to="." method="_on_cat_sleep_body_entered"]
 [connection signal="body_entered" from="HouseFloor2/ladder" to="." method="_on_ladder_body_entered"]
 [connection signal="body_entered" from="HouseFloor2/roomDoorIn" to="." method="_on_room_door_in_body_entered"]
@@ -66,3 +70,4 @@ position = Vector2(64, 121)
 [connection signal="body_exited" from="HouseFloor2/roomDoorOut" to="." method="_on_room_body_exited"]
 [connection signal="body_entered" from="HouseFloor2/computerGame" to="." method="_on_computer_game_body_entered"]
 [connection signal="body_exited" from="HouseFloor2/computerGame" to="." method="_on_computer_game_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

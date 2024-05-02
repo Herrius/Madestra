@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3v6c1jddao32"
-path="res://.godot/imported/MALDRESTA 2do PISO CASA MUESTRA.png-2bcd5218c651702cc13a3ec6db6085cd.ctex"
+uid="uid://bpun8x7o5pjld"
+path="res://.godot/imported/bedroom 3 piso.png-3be7791ece674fadb375c1ec93e55a7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/inside/MALDRESTA 2do PISO CASA MUESTRA.png"
-dest_files=["res://.godot/imported/MALDRESTA 2do PISO CASA MUESTRA.png-2bcd5218c651702cc13a3ec6db6085cd.ctex"]
+source_file="res://assets/inside/bedroom 3 piso.png"
+dest_files=["res://.godot/imported/bedroom 3 piso.png-3be7791ece674fadb375c1ec93e55a7d.ctex"]
 
 [params]
 
