@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsh51yk8l22sp"]
+[gd_scene load_steps=9 format=3 uid="uid://bsh51yk8l22sp"]
 
 [ext_resource type="PackedScene" uid="uid://d31q475ixd73i" path="res://scenes/level/base level.tscn" id="1_xldw7"]
 [ext_resource type="Script" path="res://scenes/scripts/level 2/floor2.gd" id="2_paxnb"]
 [ext_resource type="PackedScene" uid="uid://fpntekgeb475" path="res://scenes/objects/house_floor_2.tscn" id="3_ofnys"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1qqd"]
+size = Vector2(32, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnim1"]
 size = Vector2(32.75, 18.5)
@@ -21,25 +24,32 @@ script = ExtResource("2_paxnb")
 
 [node name="HouseFloor2" parent="." index="0" instance=ExtResource("3_ofnys")]
 
-[node name="ladder" type="Area2D" parent="HouseFloor2" index="1"]
+[node name="catSleep" type="Area2D" parent="HouseFloor2" index="1"]
+position = Vector2(961, 121)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseFloor2/catSleep" index="0"]
+position = Vector2(-30, 13)
+shape = SubResource("RectangleShape2D_d1qqd")
+
+[node name="ladder" type="Area2D" parent="HouseFloor2" index="2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseFloor2/ladder" index="0"]
 position = Vector2(64, 87)
 shape = SubResource("RectangleShape2D_dnim1")
 
-[node name="roomDoorIn" type="Area2D" parent="HouseFloor2" index="2"]
+[node name="roomDoorIn" type="Area2D" parent="HouseFloor2" index="3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseFloor2/roomDoorIn" index="0"]
 position = Vector2(295.5, 212)
 shape = SubResource("RectangleShape2D_1xdgs")
 
-[node name="roomDoorOut" type="Area2D" parent="HouseFloor2" index="3"]
+[node name="roomDoorOut" type="Area2D" parent="HouseFloor2" index="4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseFloor2/roomDoorOut" index="0"]
 position = Vector2(1032, 204.5)
 shape = SubResource("RectangleShape2D_auxeg")
 
-[node name="computerGame" type="Area2D" parent="HouseFloor2" index="4"]
+[node name="computerGame" type="Area2D" parent="HouseFloor2" index="5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseFloor2/computerGame" index="0"]
 position = Vector2(1040, 98.5)
@@ -48,6 +58,7 @@ shape = SubResource("RectangleShape2D_f62hm")
 [node name="Player" parent="." index="1"]
 position = Vector2(64, 121)
 
+[connection signal="body_entered" from="HouseFloor2/catSleep" to="." method="_on_cat_sleep_body_entered"]
 [connection signal="body_entered" from="HouseFloor2/ladder" to="." method="_on_ladder_body_entered"]
 [connection signal="body_entered" from="HouseFloor2/roomDoorIn" to="." method="_on_room_door_in_body_entered"]
 [connection signal="body_exited" from="HouseFloor2/roomDoorIn" to="." method="_on_room_body_exited"]

@@ -1,5 +1,5 @@
 extends CanvasLayer
-var posiciones_por_piso = {0:Vector2(608,99),1: Vector2(60,111), 2: Vector2(64,166)}
+var posiciones_por_piso = {0:Vector2(608,99),1: Vector2(60,111), 2: Vector2(64,166),3:Vector2(1039,99)}
 var questionaction:bool=false
 #0:Vector2(608,99)
 var i:int=0

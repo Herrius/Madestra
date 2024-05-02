@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxwl7ckq63v1m"]
+
+[ext_resource type="PackedScene" uid="uid://d31q475ixd73i" path="res://scenes/level/base level.tscn" id="1_kksb5"]
+[ext_resource type="Script" path="res://scenes/scripts/level 3/level_3_4.gd" id="2_fy7an"]
+[ext_resource type="PackedScene" uid="uid://fpntekgeb475" path="res://scenes/objects/house_floor_2.tscn" id="3_73m6d"]
+[ext_resource type="PackedScene" uid="uid://ccebbvxlc741v" path="res://scenes/characters/cat.tscn" id="4_5obh5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjrx8"]
+size = Vector2(15, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gudlb"]
+size = Vector2(24, 26)
+
+[node name="level 3_4" instance=ExtResource("1_kksb5")]
+script = ExtResource("2_fy7an")
+
+[node name="HouseFloor2" parent="." index="0" instance=ExtResource("3_73m6d")]
+
+[node name="Cat" parent="." index="2" instance=ExtResource("4_5obh5")]
+position = Vector2(929, 132)
+
+[node name="controlSleep" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="controlSleep" index="0"]
+position = Vector2(1032.5, 200)
+shape = SubResource("RectangleShape2D_cjrx8")
+
+[node name="sleeping" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sleeping" index="0"]
+position = Vector2(927, 104)
+shape = SubResource("RectangleShape2D_gudlb")
+
+[node name="Timer" type="Timer" parent="." index="5"]
+wait_time = 3.0
+
+[connection signal="body_entered" from="controlSleep" to="." method="_on_control_sleep_body_entered"]
+[connection signal="body_entered" from="sleeping" to="." method="_on_sleeping_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

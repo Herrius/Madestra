@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bnbkn6fj2m6b"]
+
+[ext_resource type="FontFile" uid="uid://vqjmboq5lnkf" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_clrap"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrant"]
+bg_color = Color(0.494118, 0.439216, 0.72549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq7t5"]
+bg_color = Color(0.301961, 0.266667, 0.454902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yy03"]
+bg_color = Color(0.215686, 0.188235, 0.321569, 1)
+
+[resource]
+Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("1_clrap")
+Button/styles/hover = SubResource("StyleBoxFlat_nrant")
+Button/styles/normal = SubResource("StyleBoxFlat_jq7t5")
+Button/styles/pressed = SubResource("StyleBoxFlat_4yy03")
+Label/fonts/font = ExtResource("1_clrap")

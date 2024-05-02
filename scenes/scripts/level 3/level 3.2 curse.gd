@@ -1,4 +1,4 @@
-extends "res://scenes/level/level 3.1 curse.gd"
+extends "res://scenes/scripts/level 3/level 3.1 curse.gd"
 
 func _ready():
     UiScreen.contador+=1

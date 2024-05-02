@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl4h7wcfyf048"]
+
+[ext_resource type="Theme" uid="uid://bnbkn6fj2m6b" path="res://assets/styles/ui.tres" id="1_61m71"]
+[ext_resource type="Script" path="res://scenes/ui/quiz.gd" id="1_8473h"]
+[ext_resource type="FontFile" uid="uid://vqjmboq5lnkf" path="res://assets/fonts/PixelifySans-VariableFont_wght.ttf" id="1_dvwi4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1fb2"]
+bg_color = Color(0.0627451, 0.054902, 0.0941176, 1)
+
+[sub_resource type="Theme" id="Theme_o0bjw"]
+/styles/color = SubResource("StyleBoxFlat_o1fb2")
+
+[node name="Quiz" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8473h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o0bjw")
+color = Color(0.0627451, 0.054902, 0.0941176, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -680.0
+offset_right = 680.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_61m71")
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="QuestionLabel" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(1920, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_61m71")
+theme_override_fonts/font = ExtResource("1_dvwi4")
+theme_override_font_sizes/font_size = 60
+text = "₸ⱨε ₽₹เภ¢เρⱠε øƒ ¢øηƒℓเ¢₸ яε$øⱠน₸เøη ł$ ฿α$ε∂ øη ωₕล₸?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 24
+
+[node name="Answer1" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_61m71")
+text = "Regulate mood and anxiety"
+
+[node name="Answer2" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_61m71")
+text = "Control muscle movement"
+
+[node name="Answer3" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_61m71")
+text = "Induce sleep"
+
+[node name="Answer4" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_61m71")
+text = "Increase appetite"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Answer1" to="." method="_on_Answer_selected" binds= [0]]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Answer2" to="." method="_on_Answer_selected" binds= [1]]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Answer3" to="." method="_on_Answer_selected" binds= [2]]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Answer4" to="." method="_on_Answer_selected" binds= [3]]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://wmcgbf72ptsk"]
 
-[ext_resource type="Script" path="res://scenes/level/level 3.1 curse.gd" id="1_sn8po"]
+[ext_resource type="Script" path="res://scenes/scripts/level 3/level 3.1 curse.gd" id="1_sn8po"]
 [ext_resource type="PackedScene" uid="uid://wgqxdhrprjhl" path="res://scenes/objects/minilevel1.tscn" id="2_ikvyr"]
 [ext_resource type="PackedScene" uid="uid://b2og1evtvytxr" path="res://scenes/objects/spwaner.tscn" id="3_118qg"]
 [ext_resource type="Script" path="res://scenes/objects/spawner/spwaner2.gd" id="4_xmvdk"]

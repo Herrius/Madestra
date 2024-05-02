@@ -13,13 +13,15 @@ func restart_level():
     # Recarga la escena actual
     get_tree().reload_current_scene()
 
-    
-
 
 func _on_area_2d_body_entered(_body):
     $MainMiniGame.movimiento_px=0
     call_deferred("deferred_add_car")
-    UiScreen.change_scene("res://scenes/level/level 3.2 curse.tscn")
+    $Timer.wait_time=0.1
+    $Timer.one_shot=true
+    $Timer.start()
+    await $Timer.timeout
+    UiScreen.change_scene("res://scenes/level/level_3_4.tscn")
     
 func deferred_add_car():
     var new_car = car_sprite.instantiate() as CharacterBody2D

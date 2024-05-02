@@ -10,6 +10,7 @@ var text:String=""
 
 func _ready():
     $Player.position=UiScreen.posiciones_por_piso[UiScreen.i]
+    $Player/AnimatedSprite2D.play("walk_down")
 
 func _process(_delta):
     if $Player and $Player.is_inside_tree():
@@ -104,6 +105,7 @@ func _on_comida_gato_2_body_entered(body):
     if body.name == "Player" and not comida_done:
         current_area = "comidagato2"
         player_in_task = true
+        $Player/AnimatedSprite2D.play("walk_down_cat")
 
 func _on_lavadero_area_2_body_entered(body):
     if body.name == "Player" and not lavadero_done:
