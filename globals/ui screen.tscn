@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://crpmy6kix4gsu"]
+[gd_scene load_steps=8 format=3 uid="uid://crpmy6kix4gsu"]
 
 [ext_resource type="Script" path="res://scenes/scripts/level 1/blackscreen.gd" id="1_uggd0"]
+[ext_resource type="Theme" uid="uid://bnbkn6fj2m6b" path="res://assets/styles/ui.tres" id="2_evpt8"]
 [ext_resource type="Texture2D" uid="uid://baxvgu1i23do" path="res://scenes/demos/DALL·E 2024-02-26 17.06.42 - Create a pixel art portrait of an incognito character suitable for an RPG dialogue box. The character should be depicted wearing a dark, hooded cloak .webp" id="2_mk6dt"]
+[ext_resource type="Script" path="res://globals/label.gd" id="4_htngs"]
 
 [sub_resource type="Animation" id="Animation_cbwxm"]
 length = 0.001
@@ -90,42 +92,6 @@ _data = {
 [node name="Blackscreen" type="CanvasLayer"]
 script = ExtResource("1_uggd0")
 
-[node name="ConfirmedAction" type="Panel" parent="."]
-visible = false
-anchors_preset = -1
-anchor_left = 0.395
-anchor_top = 0.389
-anchor_right = 0.605
-anchor_bottom = 0.612
-offset_top = -0.580017
-offset_bottom = -0.140045
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Question" type="Label" parent="ConfirmedAction"]
-layout_mode = 0
-offset_left = 61.0
-offset_top = 50.0
-offset_right = 275.0
-offset_bottom = 73.0
-text = "¿Deseas realizar esta tarea?"
-
-[node name="YesButton" type="Button" parent="ConfirmedAction"]
-layout_mode = 0
-offset_left = 178.0
-offset_top = 77.0
-offset_right = 209.0
-offset_bottom = 108.0
-text = "No"
-
-[node name="NoButton" type="Button" parent="ConfirmedAction"]
-layout_mode = 0
-offset_left = 130.0
-offset_top = 77.0
-offset_right = 152.0
-offset_bottom = 108.0
-text = "Si"
-
 [node name="SceenTransitation" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -168,44 +134,45 @@ offset_top = 0.23999
 offset_bottom = -0.320007
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_horizontal = 8
 
-[node name="ColorRect" type="ColorRect" parent="dialogo"]
+[node name="HBoxContainer" type="HBoxContainer" parent="dialogo"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 32.0
-offset_right = -32.0
-grow_horizontal = 2
-grow_vertical = 2
+anchor_bottom = 0.993
+offset_bottom = 0.839005
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="dialogo/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_mk6dt")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="dialogo/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 color = Color(0.0901961, 0.0901961, 0.0901961, 1)
 
-[node name="Label" type="Label" parent="dialogo/ColorRect"]
+[node name="Label" type="Label" parent="dialogo/HBoxContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.12
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -8.32001
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = -17.0
+anchor_left = 0.008
+anchor_top = 0.035
+anchor_right = 0.993
+anchor_bottom = 0.954
+offset_left = 0.191999
+offset_top = -0.0900002
+offset_right = 0.581909
+offset_bottom = 0.0039978
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_evpt8")
+theme_override_font_sizes/font_size = 0
 text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-autowrap_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="dialogo"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -48.0
-offset_right = -1408.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("2_mk6dt")
-expand_mode = 1
+vertical_alignment = 1
+autowrap_mode = 2
+clip_text = true
+script = ExtResource("4_htngs")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -216,6 +183,4 @@ libraries = {
 "": SubResource("AnimationLibrary_2kbpm")
 }
 
-[connection signal="pressed" from="ConfirmedAction/YesButton" to="." method="_on_btn_no_pressed"]
-[connection signal="pressed" from="ConfirmedAction/NoButton" to="." method="_on_btn_si_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -4,17 +4,14 @@ var questionaction:bool=false
 #0:Vector2(608,99)
 var i:int=0
 var contador:int=0
+@export var task_list: int = 0
 
-func _on_btn_si_pressed():
-    $ConfirmedAction.visible = false
+func _on_timer_timeout(text):
     $SceenTransitation.visible = true
+    $SceenTransitation/ResultScreen/ResultLabel.text=text
     # Aquí puedes añadir más lógica, como iniciar una animación o un temporizador para ocultar la pantalla de resultado
     $Timer.start()
-
-func _on_btn_no_pressed():
-    $ConfirmedAction.visible = false
-
-func _on_timer_timeout():
+    await $Timer.timeout
     $SceenTransitation.visible = false
 
 func change_scene(target: String) -> void:

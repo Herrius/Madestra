@@ -19,7 +19,10 @@ func handle_interaction():
             $Player.position=Vector2(1034,177)
             $Timer.start()
         "computerGame":
-            UiScreen.change_scene("res://scenes/level/level 3.1 curse.tscn")
+            if $Player.carrying_cat:
+                dialoge("No play a videogame holding Sombra")
+            else:
+                UiScreen.change_scene("res://scenes/level/level 3.1 curse.tscn")
         "catSleep":
             if $Player.carrying_cat:
                 $Player.carrying_cat=false
@@ -65,6 +68,16 @@ func _on_cat_sleep_body_entered(body):
     if body.name == "Player":
         current_area = "catSleep"
 
+func dialoge(text_screen):
+    var tween = create_tween()
+   
+    if UiScreen.get_node("dialogo").visible:
+        UiScreen.get_node("dialogo").visible = false
+        tween.tween_property($Player,"speed",100,0)
+    else:
+        UiScreen.get_node("dialogo").visible = true
+        UiScreen.get_node("dialogo/HBoxContainer/ColorRect/Label").text = text_screen 
+        tween.tween_property($Player,"speed",0,0)
 
 func _on_timer_timeout():
      $Player.speed=100

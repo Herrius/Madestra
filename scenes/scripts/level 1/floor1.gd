@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var task_list: int = 0
+
 var player_in_task: bool = false
 var current_area: String = ""
 var botar_done: bool = false  # Indicador de tarea de trapear completada
@@ -20,7 +20,7 @@ func _process(_delta):
 func handle_interaction():
     match current_area:
         "pass2level":
-            if task_list < 3:  # Asumiendo que hay 3 tareas a completar
+            if UiScreen.task_list < 3:  # Asumiendo que hay 3 tareas a completar
                 retreat_player(current_area)
         "lavaderoarea2":
             if player_in_task and not lavadero_done:
@@ -66,7 +66,7 @@ func blackscreen(text_screen):
 func dialoge(text_screen):
     var tween = create_tween()
     UiScreen.get_node("dialogo").visible = true
-    UiScreen.get_node("dialogo/ColorRect/Label").text = text_screen 
+    UiScreen.get_node("dialogo/HBoxContainer/ColorRect/Label").text = text_screen 
     tween.tween_property($Player,"speed",0,0)
 
 func show_pass2level_dialogue():
@@ -86,17 +86,17 @@ func retreat_player(area='cat'):
 
 
 func perform_task(text_screen):
-    UiScreen.get_node("ConfirmedAction").visible = true 
-    UiScreen.get_node("SceenTransitation/ResultScreen/ResultLabel").text = text_screen
-    task_list += 1
+    UiScreen._on_timer_timeout(text_screen)
+    UiScreen.task_list += 1
     $Player.speed=0
     $Timer.start()
+    
 
 # Funciones para manejar la entrada y salida de áreas
 func _on_pass_2_level_body_entered(body):
     if body.name == "Player":
         current_area = "pass2level"
-        if task_list>=  3:
+        if UiScreen.task_list >=  3:
             $house/pass2level/CollisionShape2D.call_deferred("set", "disabled", true)
         else:
             show_pass2level_dialogue()
