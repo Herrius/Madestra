@@ -16,16 +16,5 @@ func restart_level():
 
 func _on_area_2d_body_entered(_body):
     $MainMiniGame.movimiento_px=0
-    call_deferred("deferred_add_car")
-    $Timer.wait_time=0.1
-    $Timer.one_shot=true
-    $Timer.start()
-    await $Timer.timeout
-    UiScreen.change_scene("res://scenes/level/level_3_4.tscn")
+    UiScreen.change_scene("res://scenes/level/level 3.2 curse.tscn")
     
-func deferred_add_car():
-    var new_car = car_sprite.instantiate() as CharacterBody2D
-    add_child(new_car)
-    new_car.global_position = Vector2(56,104) # Ajusta a la posición de inicio deseada
-    new_car.speed = 500
-    new_car.direction = Vector2.RIGHT

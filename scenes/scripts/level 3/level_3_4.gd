@@ -6,11 +6,11 @@ var current_area: String = ""
 var pass3floor=true
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    UiScreen.i=3.4
+    UiScreen.i=3
     $Player.position=UiScreen.posiciones_por_piso[UiScreen.i]
-    $Player/AnimatedSprite2D.play("walk_top")
+    $Player/AnimatedSprite2D.play("walk_down")
+    $Cat.position=Vector2(929, 132)
     $Cat/AnimatedSprite2D.play("sleep")
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
     if Input.is_action_just_pressed("interact"):
@@ -62,8 +62,7 @@ func _on_sleeping_body_entered(_body):
         current_area = "sleeping"
     
 func perform_task(text_screen):
-    UiScreen.get_node("ConfirmedAction").visible = true 
-    UiScreen.get_node("SceenTransitation/ResultScreen/ResultLabel").text = text_screen
+    UiScreen._on_timer_timeout(text_screen)
     $Player.speed=0
     $Timer.wait_time=3
     $Timer.start()

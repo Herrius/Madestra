@@ -90,7 +90,6 @@ speed = 101
 
 [node name="pathKitchenCat" type="Path2D" parent="." index="2"]
 curve = SubResource("Curve2D_esxcn")
-metadata/_edit_lock_ = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="pathKitchenCat" index="0"]
 position = Vector2(407.222, 287.921)

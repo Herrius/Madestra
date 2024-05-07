@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var player_in_task: bool = false
+
 var current_area: String = ""
 var botar_done: bool = false  # Indicador de tarea de trapear completada
 var lavadero_done: bool = false  # Indicador de tarea de lavadero completada
@@ -9,8 +9,12 @@ var comida_done:bool=false
 var text:String=""
 
 func _ready():
+    $Player.carrying_cat=UiScreen.carrying_cat
     $Player.position=UiScreen.posiciones_por_piso[UiScreen.i]
-    $Player/AnimatedSprite2D.play("walk_down")
+    if UiScreen.i==0:
+        $Player/AnimatedSprite2D.play("walk_down")
+    else:
+        $Player/AnimatedSprite2D.play("walk_down_cat")
 
 func _process(_delta):
     if $Player and $Player.is_inside_tree():
@@ -23,22 +27,22 @@ func handle_interaction():
             if UiScreen.task_list < 3:  # Asumiendo que hay 3 tareas a completar
                 retreat_player(current_area)
         "lavaderoarea2":
-            if player_in_task and not lavadero_done:
+            if UiScreen.player_in_task and not lavadero_done:
                 perform_task("Lavando...")
                 change_tile_clear(Vector2(83,19),Vector2(5,6))
                 lavadero_done = true  # Marcar la tarea de lavadero como completada
-                player_in_task = false  # Resetear estado para evitar múltiples interacciones
+                UiScreen.player_in_task = false  # Resetear estado para evitar múltiples interacciones
         "botararea2":
-            if player_in_task and not botar_done :
+            if UiScreen.player_in_task and not botar_done :
                 perform_task("Botando...")
                 change_tile_clear(Vector2(86,20),Vector2(1,6))
                 botar_done = true  # Marcar la tarea de trapear como completada
-                player_in_task = false  # Resetear estado para evitar múltiples interacciones
+                UiScreen.player_in_task = false  # Resetear estado para evitar múltiples interacciones
         "comidagato2":
-            if player_in_task and not comida_done and botar_done and lavadero_done :
+            if UiScreen.player_in_task and not comida_done and botar_done and lavadero_done :
                 perform_task("Agarrando comida de gato...")
                 comida_done = true  # Marcar la tarea de trapear como completada
-                player_in_task = false  # Resetear estado para evitar múltiples interacciones
+                UiScreen.player_in_task = false  # Resetear estado para evitar múltiples interacciones
                 $Player.carrying_cat=true
                 $Path2D/PathFollow2D/Cat.visible=false
             else:
@@ -104,30 +108,30 @@ func _on_pass_2_level_body_entered(body):
 func _on_comida_gato_2_body_entered(body):
     if body.name == "Player" and not comida_done:
         current_area = "comidagato2"
-        player_in_task = true
+        UiScreen.player_in_task = true
         $Player/AnimatedSprite2D.play("walk_down_cat")
 
 func _on_lavadero_area_2_body_entered(body):
     if body.name == "Player" and not lavadero_done:
         current_area = "lavaderoarea2"
-        player_in_task = true
+        UiScreen.player_in_task = true
         
 
 func _on_botar_area_2_body_entered(body):
         if body.name == "Player" and not botar_done:
             current_area = "botararea2"
-            player_in_task = true
+            UiScreen.player_in_task = true
 
 func _on_area_body_exited(body):
     if body.name == "Player":
         current_area = ""
-        player_in_task = false  # Opcional, dependiendo de cómo desees manejar el estado del jugador
+        UiScreen.player_in_task = false  # Opcional, dependiendo de cómo desees manejar el estado del jugador
 
 
 func _on_area_2_body_exited(body):
     if body.name == "Player":
         current_area = ""
-        player_in_task = false  # Opcional, dependiendo de cómo desees manejar el estado del jugador
+        UiScreen.player_in_task = false  # Opcional, dependiendo de cómo desees manejar el estado del jugador
 
 
 func _on_kitchenout_body_entered(body):
@@ -146,6 +150,7 @@ func _on_ladder_body_entered(_body):
     var tween = create_tween()
     tween.tween_property($Player,"speed",0,0.5)
     UiScreen.change_scene("res://scenes/level/level 2 floor 2.tscn")
+
 
 func _on_timer_timeout():
      $Player.speed=100 

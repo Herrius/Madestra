@@ -352,7 +352,7 @@ script = ExtResource("1_wxm4f")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qwje1")
-animation = &"walk_right"
+animation = &"walk_down_cat"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_04vy7")

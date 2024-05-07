@@ -1,9 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxwl7ckq63v1m"]
+[gd_scene load_steps=20 format=3 uid="uid://bxwl7ckq63v1m"]
 
 [ext_resource type="PackedScene" uid="uid://d31q475ixd73i" path="res://scenes/level/base level.tscn" id="1_kksb5"]
 [ext_resource type="Script" path="res://scenes/scripts/level 3/level_3_4.gd" id="2_fy7an"]
 [ext_resource type="PackedScene" uid="uid://fpntekgeb475" path="res://scenes/objects/house_floor_2.tscn" id="3_73m6d"]
-[ext_resource type="PackedScene" uid="uid://ccebbvxlc741v" path="res://scenes/characters/cat.tscn" id="4_5obh5"]
+[ext_resource type="Texture2D" uid="uid://cxhututefl5cf" path="res://assets/monster/ANIMACION mounstruo maldrestra_0001.png" id="4_1bhhl"]
+[ext_resource type="Script" path="res://scenes/level/monsterfollow.gd" id="4_ixeln"]
+[ext_resource type="Texture2D" uid="uid://cho6yn3ce3iwu" path="res://assets/monster/ANIMACION mounstruo maldrestra_0002.png" id="5_0r0sj"]
+[ext_resource type="Texture2D" uid="uid://dx5grkjpnd6u6" path="res://assets/monster/ANIMACION mounstruo maldrestra_0003.png" id="6_xmbt5"]
+[ext_resource type="Texture2D" uid="uid://c22qa6wr0lcm6" path="res://assets/monster/ANIMACION mounstruo maldrestra_0004.png" id="7_o1gi1"]
+[ext_resource type="Texture2D" uid="uid://c2taybex2g1fx" path="res://assets/monster/ANIMACION mounstruo maldrestra_0005.png" id="8_82p0i"]
+[ext_resource type="Texture2D" uid="uid://d2uwacssfyqbs" path="res://assets/monster/ANIMACION mounstruo maldrestra_0006.png" id="9_cfc8a"]
+[ext_resource type="PackedScene" uid="uid://ccebbvxlc741v" path="res://scenes/characters/cat.tscn" id="11_edbgu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjrx8"]
 size = Vector2(15, 16)
@@ -20,45 +27,100 @@ size = Vector2(31, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw4x"]
 size = Vector2(26, 30)
 
+[sub_resource type="Curve2D" id="Curve2D_alpy1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 924, 178, 0, 0, 0, 0, 1012, 178, 0, 0, 0, 0, 924, 178)
+}
+point_count = 3
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m7xra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1bhhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0r0sj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xmbt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_o1gi1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_82p0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cfc8a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ngog"]
+radius = 6.0
+height = 20.0
+
 [node name="level 3_4" instance=ExtResource("1_kksb5")]
 script = ExtResource("2_fy7an")
 
 [node name="HouseFloor2" parent="." index="0" instance=ExtResource("3_73m6d")]
 
-[node name="Cat" parent="." index="2" instance=ExtResource("4_5obh5")]
-position = Vector2(929, 132)
+[node name="Player" parent="." index="1"]
+position = Vector2(367, 104)
 
-[node name="controlSleep" type="Area2D" parent="." index="3"]
+[node name="controlSleep" type="Area2D" parent="." index="2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="controlSleep" index="0"]
 position = Vector2(1032.5, 200)
 shape = SubResource("RectangleShape2D_cjrx8")
 
-[node name="sleeping" type="Area2D" parent="." index="4"]
+[node name="sleeping" type="Area2D" parent="." index="3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sleeping" index="0"]
 position = Vector2(927, 104)
 shape = SubResource("RectangleShape2D_gudlb")
 
-[node name="passageIn" type="Area2D" parent="." index="5"]
+[node name="passageIn" type="Area2D" parent="." index="4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="passageIn" index="0"]
 position = Vector2(1033, 218)
 shape = SubResource("RectangleShape2D_8aqn5")
 
-[node name="Timer" type="Timer" parent="." index="6"]
+[node name="Timer" type="Timer" parent="." index="5"]
 
-[node name="arriveMonster" type="Area2D" parent="." index="7"]
+[node name="arriveMonster" type="Area2D" parent="." index="6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="arriveMonster" index="0"]
 position = Vector2(63.5, 91.5)
 shape = SubResource("RectangleShape2D_ldmnt")
 
-[node name="pass3floor" type="Area2D" parent="." index="8"]
+[node name="pass3floor" type="Area2D" parent="." index="7"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pass3floor" index="0"]
 position = Vector2(608, 144)
 shape = SubResource("RectangleShape2D_ajw4x")
+
+[node name="Path2D" type="Path2D" parent="." index="8"]
+curve = SubResource("Curve2D_alpy1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+position = Vector2(924, 178)
+script = ExtResource("4_ixeln")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Path2D/PathFollow2D" index="0"]
+position = Vector2(9, -4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/CharacterBody2D" index="0"]
+sprite_frames = SubResource("SpriteFrames_m7xra")
+frame_progress = 0.0183257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/CharacterBody2D" index="1"]
+shape = SubResource("CapsuleShape2D_8ngog")
+
+[node name="Cat" parent="." index="9" instance=ExtResource("11_edbgu")]
 
 [connection signal="body_entered" from="controlSleep" to="." method="_on_control_sleep_body_entered"]
 [connection signal="body_exited" from="controlSleep" to="." method="_on_control_sleep_body_exited"]

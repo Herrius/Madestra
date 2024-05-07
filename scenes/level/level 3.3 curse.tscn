@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqgi5i60iqpqx"]
+[gd_scene load_steps=7 format=3 uid="uid://cqgi5i60iqpqx"]
 
-[ext_resource type="Script" path="res://scenes/scripts/level 3/level 3.1 curse.gd" id="1_e5go3"]
+[ext_resource type="Script" path="res://scenes/level/level 3.3 curse.gd" id="1_ahs0n"]
 [ext_resource type="PackedScene" uid="uid://wgqxdhrprjhl" path="res://scenes/objects/minilevel1.tscn" id="2_w8j7o"]
 [ext_resource type="PackedScene" uid="uid://b2og1evtvytxr" path="res://scenes/objects/spwaner.tscn" id="3_1nymj"]
+[ext_resource type="Script" path="res://scenes/characters/corrupt_main_mini_game.gd" id="5_cdtoq"]
 [ext_resource type="PackedScene" uid="uid://bend1b48tmql5" path="res://scenes/characters/main_mini_game.tscn" id="5_mm6yp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5034"]
 size = Vector2(256, 16)
 
 [node name="curse level" type="Node2D"]
-script = ExtResource("1_e5go3")
+script = ExtResource("1_ahs0n")
 
 [node name="Minilevel1" parent="." instance=ExtResource("2_w8j7o")]
 
@@ -23,6 +24,7 @@ script = null
 [node name="MainMiniGame" parent="." instance=ExtResource("5_mm6yp")]
 position = Vector2(232, 296)
 disable_mode = 2
+script = ExtResource("5_cdtoq")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

@@ -1,9 +1,17 @@
 extends CanvasLayer
-var posiciones_por_piso = {0:Vector2(608,99),1: Vector2(60,111), 2: Vector2(64,166),3:Vector2(1039,99)}
+var posiciones_por_piso = {
+    0:Vector2(608,99),
+    1:Vector2(60,111), 
+    2:Vector2(64,166),
+    3:Vector2(1039,99),
+    4:Vector2(927,99),
+    }
+var player_in_task: bool = false
 var questionaction:bool=false
 #0:Vector2(608,99)
 var i:int=0
 var contador:int=0
+@export var carrying_cat=false
 @export var task_list: int = 0
 
 func _on_timer_timeout(text):

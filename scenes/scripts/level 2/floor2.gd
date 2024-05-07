@@ -2,7 +2,8 @@ extends Node2D
 var current_area: String = ""
 var cat_sprite = preload("res://scenes/characters/cat.tscn")
 func _ready():
-    $Player.carrying_cat=true
+    UiScreen.carrying_cat=true
+    $Player.carrying_cat=UiScreen.carrying_cat
     $Player/AnimatedSprite2D.play("walk_down_cat")
 
 

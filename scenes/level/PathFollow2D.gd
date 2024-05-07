@@ -1,5 +1,5 @@
 extends PathFollow2D
-class_name pathcat
+
 var speed = 50 # La velocidad de movimiento, ajustar según necesidad
 var moving = true # Un interruptor para iniciar/detener el movimiento
 

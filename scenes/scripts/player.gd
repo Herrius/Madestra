@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @export var speed = 100
 var run=1.5
-@export var carrying_cat = false  # Exporta esta variable para poder modificarla desde el editor si es necesario
+var carrying_cat = false  # Exporta esta variable para poder modificarla desde el editor si es necesario
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
         
