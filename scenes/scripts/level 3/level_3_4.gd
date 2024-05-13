@@ -1,6 +1,6 @@
 extends Node2D
 var text:String=""
-var controlSleep=true
+var controlSleep=false
 var sleep=false
 var current_area: String = ""
 var pass3floor=true
@@ -45,7 +45,7 @@ func retreat_player(area='cat'):
 func dialoge(text_screen):
     var tween = create_tween()
     UiScreen.get_node("dialogo").visible = true
-    UiScreen.get_node("dialogo/ColorRect/Label").text = text_screen 
+    UiScreen.get_node("dialogo/HBoxContainer/ColorRect/Label").text = text_screen 
     tween.tween_property($Player,"speed",0,0)
 
 func _on_control_sleep_body_entered(_body):

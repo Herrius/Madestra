@@ -14,6 +14,7 @@ var contador:int=0
 @export var carrying_cat=false
 @export var task_list: int = 0
 
+    
 func _on_timer_timeout(text):
     $SceenTransitation.visible = true
     $SceenTransitation/ResultScreen/ResultLabel.text=text
@@ -32,3 +33,17 @@ func change_position()->void:
     $AnimationPlayer.play("fade_to_black")
     await $AnimationPlayer.animation_finished
     $AnimationPlayer.play_backwards("fade_to_black")
+
+
+
+func _input(event):
+    if $dialogo.visible: 
+        if event is InputEventKey and event.pressed and Input.is_action_just_pressed("interact"):
+        # Realiza la acción del diálogo aquí
+            $dialogo.visible = false
+
+        elif event is InputEventMouseButton and event.pressed:
+        # Realiza la acción del diálogo aquí
+            $dialogo.visible = false
+
+    

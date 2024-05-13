@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://dx4t12dujl0ib"]
+
+[ext_resource type="Script" path="res://scenes/ui/mypc.gd" id="1_0ysy1"]
+[ext_resource type="Texture2D" uid="uid://1rhwyor11xvk" path="res://assets/background/DALL·E-2024-05-12-19.50.png" id="1_v0fat"]
+[ext_resource type="Texture2D" uid="uid://b3g1ycy1fxxhq" path="res://assets/icons/pc.png" id="3_cge8s"]
+[ext_resource type="Theme" uid="uid://bnbkn6fj2m6b" path="res://assets/styles/ui.tres" id="4_ue8vd"]
+[ext_resource type="Texture2D" uid="uid://dagytkffktms5" path="res://assets/icons/bloc de notas.png" id="5_6qw36"]
+[ext_resource type="Texture2D" uid="uid://d3rcntsl84min" path="res://assets/icons/papelera de reciclaje.png" id="6_8xkt1"]
+[ext_resource type="Texture2D" uid="uid://1ajpeoekj5oh" path="res://assets/icons/internet.png" id="7_eg4lr"]
+[ext_resource type="Texture2D" uid="uid://d0lm5oygitas1" path="res://assets/icons/quiz.png" id="8_56ail"]
+[ext_resource type="Texture2D" uid="uid://dqbrj2f8i5qjy" path="res://assets/icons/juego.png" id="9_geww5"]
+
+[node name="Mypc" type="CanvasLayer"]
+layer = 0
+script = ExtResource("1_0ysy1")
+
+[node name="fondo" type="Sprite2D" parent="."]
+position = Vector2(699.906, 394.125)
+scale = Vector2(0.781355, 0.769287)
+texture = ExtResource("1_v0fat")
+
+[node name="Column 1" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="Row 1" type="VBoxContainer" parent="Column 1"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="iconPc" type="VBoxContainer" parent="Column 1/Row 1"]
+layout_mode = 2
+
+[node name="icon1" type="TextureButton" parent="Column 1/Row 1/iconPc"]
+layout_mode = 2
+texture_normal = ExtResource("3_cge8s")
+
+[node name="Label" type="Label" parent="Column 1/Row 1/iconPc"]
+layout_mode = 2
+theme = ExtResource("4_ue8vd")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "PC"
+horizontal_alignment = 1
+
+[node name="Document" type="VBoxContainer" parent="Column 1/Row 1"]
+layout_mode = 2
+
+[node name="icon2" type="TextureButton" parent="Column 1/Row 1/Document"]
+layout_mode = 2
+texture_normal = ExtResource("5_6qw36")
+
+[node name="Label" type="Label" parent="Column 1/Row 1/Document"]
+layout_mode = 2
+theme = ExtResource("4_ue8vd")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Documents"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Recycle Bin" type="VBoxContainer" parent="Column 1/Row 1"]
+layout_mode = 2
+
+[node name="TextureButton4" type="TextureButton" parent="Column 1/Row 1/Recycle Bin"]
+layout_mode = 2
+texture_normal = ExtResource("6_8xkt1")
+
+[node name="Label" type="Label" parent="Column 1/Row 1/Recycle Bin"]
+layout_mode = 2
+theme = ExtResource("4_ue8vd")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Recycle Bin"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Column 1/Row 1"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="Column 1/Row 1/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_eg4lr")
+
+[node name="Label" type="Label" parent="Column 1/Row 1/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_ue8vd")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Internet"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Column 2" type="VBoxContainer" parent="Column 1"]
+layout_mode = 2
+
+[node name="Quiz" type="VBoxContainer" parent="Column 1/Column 2"]
+layout_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="Column 1/Column 2/Quiz"]
+layout_mode = 2
+texture_normal = ExtResource("8_56ail")
+
+[node name="Label2" type="Label" parent="Column 1/Column 2/Quiz"]
+layout_mode = 2
+theme = ExtResource("4_ue8vd")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Quiz"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Game" type="VBoxContainer" parent="Column 1/Column 2"]
+layout_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="Column 1/Column 2/Game"]
+layout_mode = 2
+texture_normal = ExtResource("9_geww5")
+
+[node name="Label2" type="Label" parent="Column 1/Column 2/Game"]
+layout_mode = 2
+theme = ExtResource("4_ue8vd")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "01101010"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="focus_exited" from="Column 1/Row 1/iconPc" to="." method="_on_icon_pc_focus_exited"]
+[connection signal="pressed" from="Column 1/Row 1/iconPc/icon1" to="." method="_on_icon_1_pressed"]
