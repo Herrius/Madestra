@@ -17,5 +17,6 @@ Button/fonts/font = ExtResource("1_clrap")
 Button/styles/hover = SubResource("StyleBoxFlat_nrant")
 Button/styles/normal = SubResource("StyleBoxFlat_jq7t5")
 Button/styles/pressed = SubResource("StyleBoxFlat_4yy03")
+HBoxContainer/constants/separation = 4
 Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("1_clrap")

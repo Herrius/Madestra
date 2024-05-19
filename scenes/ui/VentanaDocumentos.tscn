@@ -1,0 +1,247 @@
+[gd_scene load_steps=11 format=3 uid="uid://cp1vkhier3ni7"]
+
+[ext_resource type="Script" path="res://scenes/ui/VentanaDocumentos.gd" id="1_jf7ph"]
+[ext_resource type="Theme" uid="uid://bnbkn6fj2m6b" path="res://assets/styles/ui.tres" id="1_n5tph"]
+[ext_resource type="Texture2D" uid="uid://b78sn5j30d0vn" path="res://assets/icons/minimizar.png" id="2_pb58w"]
+[ext_resource type="Texture2D" uid="uid://g2kn1dcvyj7x" path="res://assets/icons/cerrar.png" id="3_ddog5"]
+[ext_resource type="Texture2D" uid="uid://dagytkffktms5" path="res://assets/icons/bloc de notas.png" id="4_2lmya"]
+[ext_resource type="PackedScene" uid="uid://blvcpn03pxygq" path="res://scenes/ui/bloc.tscn" id="6_1op8i"]
+
+[sub_resource type="Animation" id="Animation_nr16m"]
+resource_name = "Close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1080)]
+}
+
+[sub_resource type="Animation" id="Animation_0yyw5"]
+resource_name = "Open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1080), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0txv2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1080)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ivrq6"]
+_data = {
+"Close": SubResource("Animation_nr16m"),
+"Open": SubResource("Animation_0yyw5"),
+"RESET": SubResource("Animation_0txv2")
+}
+
+[node name="VentanaDocumentos" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 1080.0
+offset_right = 1280.0
+offset_bottom = 1800.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jf7ph")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.874, 0.95, 0.95, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -11.5
+offset_right = 180.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme = ExtResource("1_n5tph")
+theme_override_colors/font_color = Color(0.133333, 0.12549, 0.203922, 1)
+theme_override_font_sizes/font_size = 36
+text = "My Documents"
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_pb58w")
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_ddog5")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_n5tph")
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -3.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.690196, 0.74902, 0.74902, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Veterinarians" type="TextureButton" parent="VBoxContainer/ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource("4_2lmya")
+
+[node name="Label" type="Label" parent="VBoxContainer/ColorRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_n5tph")
+theme_override_colors/font_color = Color(0.133333, 0.12549, 0.203922, 1)
+theme_override_constants/line_spacing = 0
+text = "List of
+Veterinarians
+.txt"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Psychology" type="TextureButton" parent="VBoxContainer/ColorRect/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource("4_2lmya")
+
+[node name="Label" type="Label" parent="VBoxContainer/ColorRect/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_n5tph")
+theme_override_colors/font_color = Color(0.133333, 0.12549, 0.203922, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+text = "Psychology
+Notes.txt"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="To-do-list" type="TextureButton" parent="VBoxContainer/ColorRect/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource("4_2lmya")
+
+[node name="Label" type="Label" parent="VBoxContainer/ColorRect/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_n5tph")
+theme_override_colors/font_color = Color(0.133333, 0.12549, 0.203922, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+text = "To-do list.txt"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ivrq6")
+}
+
+[node name="Control" parent="." instance=ExtResource("6_1op8i")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -270.0
+offset_right = 800.0
+offset_bottom = 450.0
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ColorRect/HBoxContainer/VBoxContainer/Veterinarians" to="." method="_on_veterinarians_pressed"]

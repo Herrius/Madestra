@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=3 uid="uid://blvcpn03pxygq"]
+
+[ext_resource type="Theme" uid="uid://bnbkn6fj2m6b" path="res://assets/styles/ui.tres" id="1_p1pej"]
+[ext_resource type="Texture2D" uid="uid://b78sn5j30d0vn" path="res://assets/icons/minimizar.png" id="2_hfy2a"]
+[ext_resource type="Texture2D" uid="uid://g2kn1dcvyj7x" path="res://assets/icons/cerrar.png" id="3_pejtw"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 90.0
+offset_right = 160.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.874, 0.95, 0.95, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -11.5
+offset_right = 180.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme = ExtResource("1_p1pej")
+theme_override_colors/font_color = Color(0.133333, 0.12549, 0.203922, 1)
+theme_override_font_sizes/font_size = 36
+text = "My Documents"
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_hfy2a")
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_pejtw")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_p1pej")
+color = Color(0.133333, 0.12549, 0.203922, 1)
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -3.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.690196, 0.74902, 0.74902, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_p1pej")
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ultrices tempus libero, ut interdum justo fermentum non. Sed nec tortor sem. Nulla at sollicitudin mi, et finibus tellus. Vestibulum sed justo semper, sodales augue a, ultricies nibh. Curabitur justo urna, volutpat eu dolor at, ullamcorper consequat est. Vivamus ut mi erat. Curabitur ut mauris ac erat semper vehicula a eget est. Vivamus cursus leo non sem condimentum, eu ullamcorper urna volutpat. Donec id facilisis enim. Aenean egestas arcu viverra ligula aliquam mattis. Cras massa ex, pharetra vel vestibulum sit amet, aliquet consectetur tortor. Vivamus dui lorem, varius quis lorem nec, venenatis fermentum odio. Nulla euismod, purus ac dapibus interdum, massa turpis porta sem, non sagittis risus elit et nibh.
+
+Donec eu tellus ut nulla interdum condimentum sit amet a mi. Aenean mi felis, scelerisque imperdiet elementum ac, porta at ligula. Nulla id dignissim velit, vel eleifend ligula. Vestibulum venenatis at velit quis rhoncus. Nulla fermentum tempor nisl, et pharetra velit tempor nec. Praesent finibus vitae libero vel rutrum. Nulla tempus turpis lectus, nec accumsan mi rutrum ac. Vestibulum nec facilisis metus. Praesent facilisis condimentum ex, ac ullamcorper augue. Maecenas ultrices metus at lacinia scelerisque.
+
+Cras eu nunc at lectus aliquet faucibus sit amet eget enim. Donec feugiat auctor hendrerit. Maecenas eget lectus efficitur enim ornare ullamcorper. Proin nec mollis erat. Quisque risus metus, semper a lectus pretium, blandit pulvinar lectus. Morbi eu rhoncus libero. Nunc commodo orci at commodo hendrerit. Donec ut volutpat arcu.
+
+Donec non vehicula tellus. Praesent ornare justo diam, a volutpat justo pharetra sed. In laoreet eget justo et fermentum. Nulla vel elementum justo. Nullam a purus molestie lacus feugiat malesuada. Nunc ac cursus enim. Sed pulvinar molestie lorem vel porta. Morbi pretium est vel tortor faucibus accumsan. Mauris sed varius est, vitae cursus ligula. Morbi a diam egestas, laoreet tortor ac, pretium nibh. Nam eget pellentesque eros.
+
+Praesent vitae eros porttitor, finibus lacus non, dignissim enim. Cras velit nisi, consequat id erat finibus, hendrerit vehicula ligula. Cras vel ligula eget dolor rhoncus faucibus. Vivamus vel odio id enim aliquet tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus orci massa, auctor at tincidunt at, facilisis id metus. Quisque varius, mauris eget rutrum faucibus, erat magna vehicula risus, ac aliquam ipsum tellus quis leo. Fusce eu aliquam mauris, eget gravida nisl. Vivamus non massa vulputate, pharetra ante condimentum, finibus odio. Nunc id interdum ante. Fusce eleifend lacus et enim scelerisque, a pulvinar est finibus. Nullam fringilla volutpat mauris et maximus. Suspendisse euismod mi id dapibus gravida. Proin maximus tempor posuere."
+fit_content = true

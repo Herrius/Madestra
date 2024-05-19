@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx4t12dujl0ib"]
+[gd_scene load_steps=11 format=3 uid="uid://dx4t12dujl0ib"]
 
 [ext_resource type="Script" path="res://scenes/ui/mypc.gd" id="1_0ysy1"]
 [ext_resource type="Texture2D" uid="uid://1rhwyor11xvk" path="res://assets/background/DALL·E-2024-05-12-19.50.png" id="1_v0fat"]
@@ -9,54 +9,67 @@
 [ext_resource type="Texture2D" uid="uid://1ajpeoekj5oh" path="res://assets/icons/internet.png" id="7_eg4lr"]
 [ext_resource type="Texture2D" uid="uid://d0lm5oygitas1" path="res://assets/icons/quiz.png" id="8_56ail"]
 [ext_resource type="Texture2D" uid="uid://dqbrj2f8i5qjy" path="res://assets/icons/juego.png" id="9_geww5"]
+[ext_resource type="PackedScene" uid="uid://cp1vkhier3ni7" path="res://scenes/ui/VentanaDocumentos.tscn" id="10_0fe2k"]
 
-[node name="Mypc" type="CanvasLayer"]
-layer = 0
-script = ExtResource("1_0ysy1")
-
-[node name="fondo" type="Sprite2D" parent="."]
-position = Vector2(699.906, 394.125)
-scale = Vector2(0.781355, 0.769287)
-texture = ExtResource("1_v0fat")
-
-[node name="Column 1" type="HBoxContainer" parent="."]
+[node name="Mypc" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 16.0
-offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ysy1")
+
+[node name="fondo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_v0fat")
+expand_mode = 2
+flip_h = true
+
+[node name="Column 1" type="HBoxContainer" parent="fondo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 
-[node name="Row 1" type="VBoxContainer" parent="Column 1"]
+[node name="Row 1" type="VBoxContainer" parent="fondo/Column 1"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="iconPc" type="VBoxContainer" parent="Column 1/Row 1"]
+[node name="iconPc" type="VBoxContainer" parent="fondo/Column 1/Row 1"]
 layout_mode = 2
 
-[node name="icon1" type="TextureButton" parent="Column 1/Row 1/iconPc"]
+[node name="icon1" type="TextureButton" parent="fondo/Column 1/Row 1/iconPc"]
 layout_mode = 2
 texture_normal = ExtResource("3_cge8s")
+stretch_mode = 0
 
-[node name="Label" type="Label" parent="Column 1/Row 1/iconPc"]
+[node name="Label" type="Label" parent="fondo/Column 1/Row 1/iconPc"]
 layout_mode = 2
 theme = ExtResource("4_ue8vd")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "PC"
 horizontal_alignment = 1
 
-[node name="Document" type="VBoxContainer" parent="Column 1/Row 1"]
+[node name="Document" type="VBoxContainer" parent="fondo/Column 1/Row 1"]
 layout_mode = 2
 
-[node name="icon2" type="TextureButton" parent="Column 1/Row 1/Document"]
+[node name="icon2" type="TextureButton" parent="fondo/Column 1/Row 1/Document"]
 layout_mode = 2
 texture_normal = ExtResource("5_6qw36")
+stretch_mode = 0
 
-[node name="Label" type="Label" parent="Column 1/Row 1/Document"]
+[node name="Label" type="Label" parent="fondo/Column 1/Row 1/Document"]
 layout_mode = 2
 theme = ExtResource("4_ue8vd")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -64,14 +77,15 @@ text = "Documents"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Recycle Bin" type="VBoxContainer" parent="Column 1/Row 1"]
+[node name="Recycle Bin" type="VBoxContainer" parent="fondo/Column 1/Row 1"]
 layout_mode = 2
 
-[node name="TextureButton4" type="TextureButton" parent="Column 1/Row 1/Recycle Bin"]
+[node name="TextureButton4" type="TextureButton" parent="fondo/Column 1/Row 1/Recycle Bin"]
 layout_mode = 2
 texture_normal = ExtResource("6_8xkt1")
+stretch_mode = 0
 
-[node name="Label" type="Label" parent="Column 1/Row 1/Recycle Bin"]
+[node name="Label" type="Label" parent="fondo/Column 1/Row 1/Recycle Bin"]
 layout_mode = 2
 theme = ExtResource("4_ue8vd")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -79,14 +93,15 @@ text = "Recycle Bin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Column 1/Row 1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="fondo/Column 1/Row 1"]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="Column 1/Row 1/VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="fondo/Column 1/Row 1/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("7_eg4lr")
+stretch_mode = 0
 
-[node name="Label" type="Label" parent="Column 1/Row 1/VBoxContainer"]
+[node name="Label" type="Label" parent="fondo/Column 1/Row 1/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_ue8vd")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -94,17 +109,20 @@ text = "Internet"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Column 2" type="VBoxContainer" parent="Column 1"]
+[node name="Column 2" type="VBoxContainer" parent="fondo/Column 1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Quiz" type="VBoxContainer" parent="fondo/Column 1/Column 2"]
 layout_mode = 2
 
-[node name="Quiz" type="VBoxContainer" parent="Column 1/Column 2"]
-layout_mode = 2
-
-[node name="TextureButton3" type="TextureButton" parent="Column 1/Column 2/Quiz"]
+[node name="TextureButton3" type="TextureButton" parent="fondo/Column 1/Column 2/Quiz"]
 layout_mode = 2
 texture_normal = ExtResource("8_56ail")
+stretch_mode = 0
 
-[node name="Label2" type="Label" parent="Column 1/Column 2/Quiz"]
+[node name="Label2" type="Label" parent="fondo/Column 1/Column 2/Quiz"]
 layout_mode = 2
 theme = ExtResource("4_ue8vd")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -112,14 +130,15 @@ text = "Quiz"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Game" type="VBoxContainer" parent="Column 1/Column 2"]
+[node name="Game" type="VBoxContainer" parent="fondo/Column 1/Column 2"]
 layout_mode = 2
 
-[node name="TextureButton3" type="TextureButton" parent="Column 1/Column 2/Game"]
+[node name="TextureButton3" type="TextureButton" parent="fondo/Column 1/Column 2/Game"]
 layout_mode = 2
 texture_normal = ExtResource("9_geww5")
+stretch_mode = 0
 
-[node name="Label2" type="Label" parent="Column 1/Column 2/Game"]
+[node name="Label2" type="Label" parent="fondo/Column 1/Column 2/Game"]
 layout_mode = 2
 theme = ExtResource("4_ue8vd")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -127,5 +146,8 @@ text = "01101010"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="focus_exited" from="Column 1/Row 1/iconPc" to="." method="_on_icon_pc_focus_exited"]
-[connection signal="pressed" from="Column 1/Row 1/iconPc/icon1" to="." method="_on_icon_1_pressed"]
+[node name="VentanaDocumentos" parent="." instance=ExtResource("10_0fe2k")]
+layout_mode = 1
+
+[connection signal="pressed" from="fondo/Column 1/Row 1/iconPc/icon1" to="." method="_on_icon_1_pressed"]
+[connection signal="pressed" from="fondo/Column 1/Row 1/Document/icon2" to="." method="_on_icon_2_pressed"]
